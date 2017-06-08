@@ -1,9 +1,9 @@
 === WP Email Template  ===
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
-Requires at least: 4.1
-Tested up to: 4.7.4
-Stable tag: 2.1.4
+Requires at least: 4.5
+Tested up to: 4.8.0
+Stable tag: 2.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,7 +22,7 @@ WP Email Template 2 things - beautifully
 * Mandrill (API or SMTP)
 * SparkPost (HTTP API or SMTP API)
 
-= Email Template =
+= EMAIL TEMPLATE =
 
 The plugin applies a HTML template to email sent from your WordPress site. The Template is optimized to show your HTML emails perfectly in the10 most popular email browsers.
 
@@ -36,7 +36,7 @@ The plugin applies a HTML template to email sent from your WordPress site. The T
 * Windows Live Desktop
 * Mozilla Thunderbird
 
-= Template Edit Options =
+= TEMPLATE EDIT OPTIONS =
 
 * Option to Turn the Template ON | OFF. OFF to just use the plugin use to set up wp email sender without using the template (see below).
 * Dynamic Template Width - admin can edit the 600px default width of the Template.
@@ -49,7 +49,7 @@ The plugin applies a HTML template to email sent from your WordPress site. The T
 * Many more dynamic style options available in the Pro version.
 
 
-= Email Sending Options =
+= EMAIL SENDING OPTIONS =
 
 The biggest issue users have are:
 
@@ -75,7 +75,7 @@ At a3rev we want users to be able to
 
 That is why we have added the Email Sending Provider Configuration Options so you can do all of that with just one plugin - WP Email Template.
 
-= Email from WordPress Plugins =
+= EMAIL FROM PLUGINS =
 
 WP Email Template will not work with any plugin that:
 
@@ -93,48 +93,15 @@ Some of the better known plugins of the 1,000's of plugins that WP Email Templat
 * BackupBuddy - I love it when even my admin emails are branded - see the screenshots
 * Wordfence - Branded security emails - nice.
 
-= Mobile First App style admin interface =
+= PREMIUM VERSION =
 
-* 100% compatible with WordPress v4.2.2 admin interface.
-* Backward compatibility to WordPress v4.0
-* Mobile first admin interface.
+For those who want more advanced features there is a Premium version. View addition features at [WP EMAIL TEMPLATE PREMIUM](http://a3rev.com/shop/wp-email-template/)
 
-= a3rev Plugins Lite & Pro Version Admin Interface =
+= CONTRIBUTE =
 
-* All a3rev Lite Version plugins have exactly the same admin interface as the Pro Version.
-* Pro Version feature Setting Boxes have a green box header.
-* The Pro Version settings are all active on the admin panels But do not save and are not applied to the front end.
-* Upgrading to the Pro version activates all the Pro version Features and Settings and removes the Setting Box header green background
->= Premium Support =
+When you download WP Email Template, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of this plugin head over to the WP Email Template public [GitHub Repository](https://github.com/a3rev/wp-email-template-lite) to find out how you can contribute.
 
->The a3rev team does not provide support for the WP Email Template plugin on the WordPress.org forums. One on one developer support is available via the plugins a3rev [support forum](https://a3rev.com/forums/forum/wordpress-plugins/wp-email-template/) to people who have purchased a [WP Email Template Pro](http://a3rev.com/shop/wp-email-template/) plugin Lifetime License.
-
->The Pro Version has lots of extra features that coupled with developer support might be well worth your investment!
-
-= The Pro Version Upgrade =
-
-* Wow your web clients and customers with an email template that perfectly matches the site design.
-* Ability to only apply to emails that you want the template to apply to instead of all.
-* We use it on every site we do and it just blows the client away.
-* Best thing of all it takes just minutes to do.
-* Our clients love tweaking the design with the point and click settings.
-
-See the Lite Versions plugin admin panel for more Pro Version details.
-
-= Localization =
-
-If you do a translation for your site please send it to us and we'll include it in the plugins language folder and credit you here with the translation and a link to your site.
-
-* English (default) - always included.
-* German - DE Thanks to Marko Geisler
-* Russian - RU Thanks to Viktor Demidov
-* .po file (wp_email_template.po) in languages folder for translations.
-* [Go here](http://a3rev.com/contact-us-page/) to send your translation files to us.
-
-= Plugin Resources =
-
-[PRO Version](http://a3rev.com/shop/wp-email-template/) |
-[Documentation](http://docs.a3rev.com/user-guides/wordpress/wp-email-template/) |
+Want to add a new language to WP Email Template! You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-email-template)
 
 
 == Installation ==
@@ -182,6 +149,13 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.0 - 2017/06/08 =
+* Feature - Launched WP Email Template public Repository
+* Tweak - Tested for compatibility with WordPress major version 4.8.0
+* Tweak - Tested for full compatibility with WooCommerce version 3.0.8
+* Tweak - Include bootstrap modal script into plugin framework
+* Tweak - Update a3rev plugin framework to latest version
 
 = 2.1.4 - 2017/05/03 =
 * Tweak - Update  email_header.html template file for compatibility with WooCommerce version 3.0.5
@@ -566,6 +540,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.0 =
+Feature Update. 2 code tweaks for compatibility with WordPress major version 4.8.0 and WooCommerce version 3.0.8 and launch of the plugins public Github repo
 
 = 2.1.4 =
 Maintenance Update. 2 code tweaks for compatibility with WooCommerce 3.0.5 and WordPress 4.7.4
