@@ -30,18 +30,15 @@ class WP_Email_Tempate_Admin_UI
 	 * @var string
 	 * You must change to correct plugin name that you are working
 	 */
-	public $plugin_name = 'wp_email_template';
 
-	public $google_api_key_option = 'wp_email_template_google_api_key';
-
-	public $toggle_box_open_option = 'wp_email_template_toggle_box_open';
-
-	public $is_free_plugin = true;
-
-	public $version_transient = 'a3rev_wp_email_template_update_info';
-
-	public $plugin_option_key = 'a3rev_wp_email_template_plugin';
-
+	public $framework_version      = '2.0.2';
+	public $plugin_name            = WP_EMAIL_TEMPLATE_KEY;
+	public $plugin_path            = WP_EMAIL_TEMPLATE_NAME;
+	public $google_api_key_option  = WP_EMAIL_TEMPLATE_KEY . '_google_api_key';
+	public $toggle_box_open_option = WP_EMAIL_TEMPLATE_KEY . '_toggle_box_open';
+	public $version_transient      = WP_EMAIL_TEMPLATE_KEY . '_licinfo';
+	public $is_free_plugin         = true;
+	
 	public $support_url = 'https://a3rev.com/forums/forum/wordpress-plugins/wp-email-template/';
 
 
@@ -55,7 +52,7 @@ class WP_Email_Tempate_Admin_UI
 	 * @var string
 	 * You must change to correct pro plugin page url on a3rev site
 	 */
-	public $pro_plugin_page_url = 'http://a3rev.com/shop/wp-email-template/';
+	public $pro_plugin_page_url = 'https://a3rev.com/shop/wp-email-template/';
 
 	/**
 	 * @var string
@@ -323,11 +320,11 @@ class WP_Email_Tempate_Admin_UI
 				if ( FALSE !== stristr( $version_transient, '||' )
 					&& is_array( $version_info )
 					&& isset( $version_info[1] ) && $version_info[1] == 'valid'
-					&& version_compare( get_option('a3rev_wp_email_template_lite_version') , $version_info[0], '<' ) ) {
+					&& version_compare( WP_EMAIL_TEMPLATE_VERSION , $version_info[0], '<' ) ) {
 
 						$version_message = sprintf( __( 'There is a new version <span class="a3rev-ui-new-plugin-version">%s</span> available, <a href="%s" target="_blank">update now</a> or download direct from <a href="%s" target="_blank">My Account</a> on a3rev.com', 'wp-email-template' ),
 							$version_info[0],
-							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . WP_EMAIL_TEMPLATE_NAME ), 'upgrade-plugin_' . WP_EMAIL_TEMPLATE_NAME ),
+							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . $this->plugin_path ), 'upgrade-plugin_' . $this->plugin_path ),
 							'https://a3rev.com/my-account/downloads/'
 						);
 				}

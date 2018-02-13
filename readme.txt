@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
-Tested up to: 4.9.0
-Stable tag: 2.2.1
+Tested up to: 4.9.4
+Stable tag: 2.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,13 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.2 - 2018/02/13 =
+* Maintenance Update. Under the bonnet tweaks to keep your plugin running smoothly and is the foundation for new features to be developed this year 
+* Framework - Update a3rev Plugin Framework to version 2.0.2
+* Framework - Add Framework version for all style and script files
+* Tweak - Update for full compatibility with a3rev Dashboard plugin
+* Tweak - Test for compatibility with WordPress 4.9.4
 
 = 2.2.1 - 2017/10/14 =
 * Tweak - Tested for compatibility with WooCommerce 3.2.1
@@ -545,6 +552,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.2 =
+Maintenance Update. This version updates the Plugin Framework to v 2.0.2, adds full compatibility with a3rev dashboard and WordPress v 4.9.4
 
 = 2.2.1 =
 Maintenance Update. Various tweaks for compatibility with WooCommerce version 3.2.1 and WordPress 4.8.2

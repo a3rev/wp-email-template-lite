@@ -5,10 +5,10 @@ if (!defined('ABSPATH'))
 
 class WP_Email_Template_Less
 {
-	public $plugin_name = 'wp_email_template';
-	public $css_file_name = 'wp_email_template';
-	public $plugin_folder = WP_EMAIL_TEMPLATE_FOLDER;
-	public $plugin_dir = WP_EMAIL_TEMPLATE_DIR;
+    public $plugin_name   = WP_EMAIL_TEMPLATE_KEY;
+    public $css_file_name = 'wp_email_template';
+    public $plugin_folder = WP_EMAIL_TEMPLATE_FOLDER;
+    public $plugin_dir    = WP_EMAIL_TEMPLATE_DIR;
     
     /*-----------------------------------------------------------------------------------*/
     /* Constructor */

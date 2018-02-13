@@ -1,21 +1,20 @@
 <?php
+
 function wp_email_template_install(){
 	update_option('a3rev_wp_email_template_version', '2.3.6');
-	update_option('a3rev_wp_email_template_lite_version', '2.2.1');
+	update_option('a3rev_wp_email_template_lite_version', WP_EMAIL_TEMPLATE_VERSION );
 
 	global $wp_email_template_exclude_subject_data;
 	$wp_email_template_exclude_subject_data->install_database();
 
 	// Remove house keeping option of another version
-	delete_option('wp_email_template_clean_on_deletion');
+	delete_option( $wp_email_template_admin_init->plugin_name . '_clean_on_deletion' );
 
 	global $wp_email_template_admin_init;
 	delete_metadata( 'user', 0, $wp_email_template_admin_init->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
 
 	update_option('a3rev_wp_email_just_installed', true);
 }
-
-update_option('a3rev_wp_email_template_plugin', 'wp-email-template' );
 
 /**
  * Load languages file
@@ -27,9 +26,6 @@ function wp_email_template_init() {
 		// Set Settings Default from Admin Init
 		global $wp_email_template_admin_init;
 		$wp_email_template_admin_init->set_default_settings();
-
-		wp_redirect( admin_url( 'admin.php?page=wp_email_template', 'relative' ) );
-		exit;
 	}
 
 	wp_email_template_plugin_textdomain();
@@ -153,7 +149,7 @@ function a3rev_wp_email_template_lite_upgrade_plugin () {
 	}
 
 	update_option('a3rev_wp_email_template_version', '2.3.6');
-	update_option('a3rev_wp_email_template_lite_version', '2.2.1');
+	update_option('a3rev_wp_email_template_lite_version', WP_EMAIL_TEMPLATE_VERSION );
 }
 
 ?>
