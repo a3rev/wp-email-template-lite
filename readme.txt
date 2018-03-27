@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
 Tested up to: 4.9.4
-Stable tag: 2.2.2
+Stable tag: 2.2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -108,9 +108,9 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 = Minimum Requirements =
 
-* WordPress 4.0
-* PHP version 5.2.4 or greater
-* MySQL version 5.3 or greater
+* WordPress 4.6 or greater
+* PHP version 5.6.0 or greater
+* MySQL version 5.6 or greater OR MariaDB version 10.0 or greater
 
 = Automatic installation =
 
@@ -149,6 +149,12 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.3 - 2018/03/27 =
+* Maintenance Update. 2 code tweaks to rectify email alignment and text decoration in some browsers.  
+* Tweak - Remove min-width of body of email template and set max-width for table content from 96% to 100% so that it does not have space on left when view email content on mobile
+* Tweak - Support default style for some html tag on email content, for example b, i, center, ... tags
+* Framework - Update plugin framework to new version 2.0.3
 
 = 2.2.2 - 2018/02/13 =
 * Maintenance Update. Under the bonnet tweaks to keep your plugin running smoothly and is the foundation for new features to be developed this year 
@@ -552,6 +558,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.3 =
+Maintenance Update. 2 code tweaks to rectify email alignment and text decoration in some browsers.
 
 = 2.2.2 =
 Maintenance Update. This version updates the Plugin Framework to v 2.0.2, adds full compatibility with a3rev dashboard and WordPress v 4.9.4

@@ -12,7 +12,6 @@
 			* {-webkit-text-size-adjust: none}
 			body{
 				width:100%; /* Force Hotmail to display emails at full width */
-				min-width:700px !important;
 				-webkit-text-size-adjust:none; /* Prevent Webkit platforms from changing default text sizes. */
 				margin:0;
 				padding:0;
@@ -98,6 +97,12 @@
 				font-family:/*content_font*/;
 				text-align:/*content_alignment*/;
 				/*content_text_style*/
+			}
+			#divTemplateBody b, #divTemplateBody strong {
+				font-weight: bold !important;
+			}
+			#divTemplateBody center {
+				text-align: center;
 			}
 			#divTemplateBody, #templateBody{
 				background-color: /*content_background_colour*/;
@@ -186,7 +191,7 @@
         	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
             	<tr>
                 	<td align="center" valign="top">
-                    	<table border="0" cellpadding="0" cellspacing="0" width="<!--email_container_width-->" class="contenttable" id="templateContainer" style="width: <!--email_container_width-->px; max-width: 96%;">
+                    	<table border="0" cellpadding="0" cellspacing="0" width="<!--email_container_width-->" class="contenttable" id="templateContainer" style="width: <!--email_container_width-->px; max-width: 100%;">
                         	<tr>
                             	<td id="cellContainer" align="center" valign="top">
 
