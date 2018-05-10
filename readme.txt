@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 2.2.3
+Tested up to: 4.9.5
+Stable tag: 2.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,12 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.4 - 2018/05/10 =
+* This Maintenance update fixes a bug on Multisite Network activation issue plus compatibility with WordPress 4.9.5 and WooCommerce 3.3.5
+* Fix - hook require_once( ABSPATH . wp-includes/pluggable.php ) to 'muplugins_loaded' tag from fix conflict with Mandrill 4 years ago. Resolves issue that cannot access plugin settings menu if plugin is Network Activated 
+* Tweak - Test for compatibility with WordPress 4.9.5
+* Tweak - Test for compatibility with WooCommerce 3.3.5
 
 = 2.2.3 - 2018/03/27 =
 * Maintenance Update. 2 code tweaks to rectify email alignment and text decoration in some browsers.  
@@ -558,6 +564,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.4 =
+Maintenance update.  Bug fix for Multisite Network activation issue plus compatibility with WordPress 4.9.5 and WooCommerce 3.3.5
 
 = 2.2.3 =
 Maintenance Update. 2 code tweaks to rectify email alignment and text decoration in some browsers.

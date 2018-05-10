@@ -107,6 +107,12 @@ class WP_Email_Template_Admin_Page extends WP_Email_Tempate_Admin_UI
 	}
 	
 	// fix conflict with mandrill plugin
+
+	public function fixed_conflicted_mandrill() {
+		require_once( ABSPATH . 'wp-includes/pluggable.php' );
+		add_action('init' , array( $this, 'remove_mandrill_notice' ) );
+	}
+	
 	public function remove_mandrill_notice() {
 		remove_action( 'admin_notices', array( 'wpMandrill', 'adminNotices' ) );
 		global $wp_et_send_wp_emails;
@@ -120,8 +126,7 @@ class WP_Email_Template_Admin_Page extends WP_Email_Tempate_Admin_UI
 	public function tabs_include() {
 		
 		if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && $_GET['page'] == 'wp_email_template' ) {
-			require_once( ABSPATH . 'wp-includes/pluggable.php' );
-			add_action('init' , array( $this, 'remove_mandrill_notice' ) );
+			add_action( 'muplugins_loaded' , array( $this , 'fixed_conflicted_mandrill' ) );
 		}
 		
 		include_once( $this->admin_plugin_dir() . '/tabs/admin-general-tab.php' );
