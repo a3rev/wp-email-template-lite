@@ -355,6 +355,7 @@ class WP_Email_Template_Fonts_Face extends WP_Email_Tempate_Admin_UI
 	/* Fonts Face Constructor */
 	/*-----------------------------------------------------------------------------------*/
 	public function __construct() {
+		parent::__construct();
 
 		// Enable Google Font API Key
 		if ( isset( $_POST[ $this->google_api_key_option . '_enable' ] ) ) {

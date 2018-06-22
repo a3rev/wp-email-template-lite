@@ -31,7 +31,7 @@ class WP_Email_Tempate_Admin_UI
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version      = '2.0.3';
+	public $framework_version      = '2.0.5';
 	public $plugin_name            = WP_EMAIL_TEMPLATE_KEY;
 	public $plugin_path            = WP_EMAIL_TEMPLATE_NAME;
 	public $google_api_key_option  = '';
@@ -39,7 +39,7 @@ class WP_Email_Tempate_Admin_UI
 	public $version_transient      = '';
 	public $is_free_plugin         = true;
 	
-	public $support_url = 'https://a3rev.com/forums/forum/wordpress-plugins/wp-email-template/';
+	public $support_url            = '';
 
 
 	/**
@@ -74,6 +74,8 @@ class WP_Email_Tempate_Admin_UI
 		$this->google_api_key_option  = WP_EMAIL_TEMPLATE_KEY . '_google_api_key';
 		$this->toggle_box_open_option = WP_EMAIL_TEMPLATE_KEY . '_toggle_box_open';
 		$this->version_transient      = WP_EMAIL_TEMPLATE_KEY . '_licinfo';
+
+		$this->support_url = 'https://wordpress.org/support/plugin/wp-email-template';
 	}
 
 

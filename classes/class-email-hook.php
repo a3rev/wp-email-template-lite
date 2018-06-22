@@ -261,7 +261,10 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 	}
 
 	public static function plugin_extension_box( $boxes = array() ) {
-		$support_box = '<a href="https://wordpress.org/support/plugin/wp-email-template" target="_blank" alt="'.__('Go to Support Forum', 'wp-email-template' ).'"><img src="'.WP_EMAIL_TEMPLATE_IMAGES_URL.'/go-to-support-forum.png" /></a>';
+
+		global $wp_email_template_admin_init;
+
+		$support_box = '<a href="'.$wp_email_template_admin_init->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'wp-email-template' ).'"><img src="'.WP_EMAIL_TEMPLATE_IMAGES_URL.'/go-to-support-forum.png" /></a>';
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'
@@ -304,8 +307,10 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 		if ( $plugin_name != WP_EMAIL_TEMPLATE_NAME) {
 			return $links;
 		}
-		$links[] = '<a href="http://docs.a3rev.com/user-guides/wordpress/wp-email-template/" target="_blank">'.__('Documentation', 'wp-email-template' ).'</a>';
-		$links[] = '<a href="http://wordpress.org/support/plugin/wp-email-template" target="_blank">'.__('Support', 'wp-email-template' ).'</a>';
+
+		global $wp_email_template_admin_init;
+
+		$links[] = '<a href="'.$wp_email_template_admin_init->support_url.'" target="_blank">'.__('Support', 'wp-email-template' ).'</a>';
 		return $links;
 	}
 

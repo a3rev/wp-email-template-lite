@@ -402,6 +402,10 @@ class WP_Email_Template_Functions
 				include( WP_EMAIL_TEMPLATE_DIR. '/includes/simple_html_dom.php' );
 			}
 			$message_dom = a3_str_get_html( $message );
+			if ( false === $message_dom ) {
+				return $message;
+			}
+			
 			$message = $message_dom->find( 'body', 0 )->innertext;
 		}
 

@@ -3,7 +3,7 @@
 Plugin Name: WP Email Template LITE
 Plugin URI: http://a3rev.com/shop/wp-email-template/
 Description: This plugin automatically adds a professional, responsive, customizable, email browser optimized HTML template for all WordPress and WordPress plugin generated emails that are sent from your site to customers and admins. Works with any WordPress plugin including the e-commerce plugins WooCommerce and WP e-Commerce.
-Version: 2.2.5
+Version: 2.2.6
 Requires at least: 4.5
 Tested up to: 4.9.6
 Author: a3rev Software
@@ -11,7 +11,7 @@ Author URI: https://a3rev.com/
 Text Domain: wp-email-template
 Domain Path: /languages
 WC requires at least: 2.0.0
-WC tested up to: 3.4.0
+WC tested up to: 3.4.3
 License: This software is under commercial license and copyright to A3 Revolution Software Development team
 
 	WP Email Template plugin
@@ -35,10 +35,9 @@ define('WP_EMAIL_TEMPLATE_IMAGES_URL', WP_EMAIL_TEMPLATE_URL . '/assets/images')
 define('WP_EMAIL_TEMPLATE_JS_URL', WP_EMAIL_TEMPLATE_URL . '/assets/js');
 define('WP_EMAIL_TEMPLATE_CSS_URL', WP_EMAIL_TEMPLATE_URL . '/assets/css');
 if (!defined("WP_EMAIL_TEMPLATE_AUTHOR_URI")) define("WP_EMAIL_TEMPLATE_AUTHOR_URI", "https://a3rev.com/shop/wp-email-template/");
-if (!defined("WP_EMAIL_TEMPLATE_DOCS_URI")) define("WP_EMAIL_TEMPLATE_DOCS_URI", "http://docs.a3rev.com/user-guides/plugins-extensions/wordpress/wp-email-template/");
 
 define( 'WP_EMAIL_TEMPLATE_KEY', 'wp_email_template' );
-define( 'WP_EMAIL_TEMPLATE_VERSION', '2.2.5' );
+define( 'WP_EMAIL_TEMPLATE_VERSION', '2.2.6' );
 
 /**
  * Load Localisation files.

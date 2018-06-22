@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
 Tested up to: 4.9.6
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,16 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.6 - 2018/06/22 =
+* This Maintenance update fixes a validation bug, a plugin framework issue, increases max file size limit and compatibility with WooCommerce 3.4.3
+* Tweak - Increase value of MAX_FILE_SIZE from 600KB to 2MB so that it supports email content to that size.
+* Credit - Thanks to Mathieu Belanger for reporting the MAX_FILE_SIZE issue
+* Tweak - Test for compatibility with WooCommerce 3.4.3
+* Tweak - Update plugin admin page sidebar Place card links for support and more plugins
+* Framework - Framework Global Box open and close settings options  
+* Framework - Update a3rev Plugin Framework to version 2.0.5
+* Fix - Validate if result of get HTML DOM is false then return
 
 = 2.2.5 - 2018/05/26 =
 * This maintenance update is for compatibility with WordPress 4.9.6 and WooCommerce 3.4.0 and the new GDPR compliance requirements for users in the EU 
@@ -570,6 +580,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.6 =
+Maintenance update fixes a validation bug, a plugin framework issue, increases max file size limit and compatibility with WooCommerce 3.4.3
 
 = 2.2.5 =
 Maintenance Update. Compatibility with WooCommerce 3.4.0, WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU
