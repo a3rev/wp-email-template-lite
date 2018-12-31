@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
-Tested up to: 4.9.6
-Stable tag: 2.2.6
+Tested up to: 5.0.2
+Stable tag: 2.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -150,10 +150,23 @@ The manual installation method involves down loading our plugin and uploading it
 
 == Changelog ==
 
+= 2.2.7 - 2018/12/31 =
+* This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.3 and PHP 7.3. It also includes performance updates to the plugin framework.
+* Tweak - Test for compatibility with WordPress 5.0.2 and WordPress 4.9.9
+* Tweak - Test for compatibility with WooCommerce 3.5.3
+* Tweak - Create new structure for future development of Gutenberg Blocks
+* Framework - Performance improvement.  Replace wp_remote_fopen  with file_get_contents for get web fonts
+* Framework - Performance improvement. Define new variable `is_load_google_fonts` if admin does not require to load google fonts
+* Credit - Props to Derek for alerting us to the framework google fonts performance issue
+* Framework - Register style name for dynamic style of plugin for use with Gutenberg block
+* Framework - Update Modal script and style to version 4.1.1
+* Framework - Update a3rev Plugin Framework to version 2.1.0
+* Framework - Test and update for compatibility with PHP 7.3
+
 = 2.2.6 - 2018/06/22 =
 * This Maintenance update fixes a validation bug, a plugin framework issue, increases max file size limit and compatibility with WooCommerce 3.4.3
 * Tweak - Increase value of MAX_FILE_SIZE from 600KB to 2MB so that it supports email content to that size.
-* Credit - Thanks to Mathieu Belanger for reporting the MAX_FILE_SIZE issue
+* Credit – Thanks to Parkour3 for reporting the MAX_FILE_SIZE issue
 * Tweak - Test for compatibility with WooCommerce 3.4.3
 * Tweak - Update plugin admin page sidebar Place card links for support and more plugins
 * Framework - Framework Global Box open and close settings options  
@@ -580,6 +593,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.7 =
+This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.3 and PHP 7.3. It also includes performance updates to the plugin framework.
 
 = 2.2.6 =
 Maintenance update fixes a validation bug, a plugin framework issue, increases max file size limit and compatibility with WooCommerce 3.4.3
