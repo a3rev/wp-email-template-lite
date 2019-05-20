@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
-Tested up to: 5.1.1
-Stable tag: 2.2.8
+Tested up to: 5.2.0
+Stable tag: 2.2.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,10 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.9 - 2019/05/20 =
+* This maintenance update fixes an issue with email notifications not showing email contents on servers that run PHP 7.3.0. 
+* Fix - Email Content not showing in email notifications. Update Simple Html Dom lib to version 1.8 for compatibility with PHP 7.3
 
 = 2.2.8 - 2019/04/26 =
 * This maintenance update has tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility
@@ -599,6 +603,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.9 =
+This maintenance update fixes an issue with email notifications not showing email contents on servers that run PHP 7.3.0.
 
 = 2.2.8 =
 This maintenance update has tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility
