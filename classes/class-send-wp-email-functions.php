@@ -487,6 +487,9 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 			ob_start();
 			$phpmailer->Body = '';
 			//$phpmailer->MIMEBody = null;
+			if ( ! empty( $phpmailer->Password ) ) {
+				$phpmailer->Password = '*****************';
+			}
 			var_dump( $phpmailer );
 			$phpmailer_error = ob_get_clean();
 			$phpmailer_error = str_replace( 'body {', 'body_replace', $phpmailer_error );

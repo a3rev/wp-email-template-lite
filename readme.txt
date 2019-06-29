@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
-Tested up to: 5.2.0
-Stable tag: 2.2.9
+Tested up to: 5.2.2
+Stable tag: 2.2.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,11 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.2.10 - 2019/06/29 =
+* This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3 plus compatibility with WordPress v 5.2.2 and a security tweak.
+* Tweak - Third Party Sender authorization credentials encryption
+* Fix - PHP warning continue targeting switch is equivalent to break for compatibility on PHP 7.3
 
 = 2.2.9 - 2019/05/20 =
 * This maintenance update fixes an issue with email notifications not showing email contents on servers that run PHP 7.3.0. 
@@ -603,6 +608,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.2.10 =
+This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3 plus compatibility with WordPress v 5.2.2 and a security tweak
 
 = 2.2.9 =
 This maintenance update fixes an issue with email notifications not showing email contents on servers that run PHP 7.3.0.
