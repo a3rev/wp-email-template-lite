@@ -209,14 +209,60 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 			$email_data['subject'] = wp_specialchars_decode( $email_data['subject'], ENT_QUOTES );
 		}
 
+		// Detect content-type of the original email
+		$is_text_plain = true;
+		if ( isset( $email_data['headers'] ) && ! empty( $email_data['headers'] ) ) {
+			$headers = $email_data['headers'];
+
+			if ( ! is_array( $headers ) ) {
+				$tempheaders = explode( "\n", str_replace( "\r\n", "\n", $headers ) );
+			} else {
+				$tempheaders = $headers;
+			}
+
+			if ( ! empty( $tempheaders ) ) {
+				// Iterate through the raw headers
+				foreach ( (array) $tempheaders as $header ) {
+					if ( strpos( $header, ':' ) === false ) {
+						continue;
+					}
+					// Explode them out
+					list( $name, $content ) = explode( ':', trim( $header ), 2 );
+
+					// Cleanup crew
+					$name    = trim( $name );
+					$content = trim( $content );
+
+					if ( 'content-type' === $name ) {
+						if ( strpos( $content, ';' ) !== false ) {
+							list( $type, $charset_content ) = explode( ';', $content );
+							$content_type                   = trim( $type );
+
+							// Avoid setting an empty $content_type.
+						} elseif ( '' !== trim( $content ) ) {
+							$content_type = trim( $content );
+						}
+
+						break;
+					}
+				}
+			}
+
+			// Set Content-Type and charset
+			// If we don't have a content-type from the input headers
+			if ( isset( $content_type ) && 'text/plain' !== $content_type ) {
+				$is_text_plain = false;
+			}
+		}
+
 		$email_heading = $email_data['subject'] ;
 		global $wp_email_original_message;
 		if ( isset( $email_data['message'] ) && stristr( $email_data['message'], '<!--NO_USE_EMAIL_TEMPLATE-->' ) === false ) {
 			$wp_email_original_message = $email_data['message'];
-			$email_data['message'] = WP_Email_Template_Functions::email_content($email_heading, $email_data['message']);
+			$email_data['message'] = WP_Email_Template_Functions::email_content( $email_heading, $email_data['message'], false, $is_text_plain );
 		} elseif ( isset( $email_data['html'] ) && stristr( $email_data['html'], '<!--NO_USE_EMAIL_TEMPLATE-->' ) === false ) {
 			$wp_email_original_message = $email_data['html'];
-			$email_data['html'] = WP_Email_Template_Functions::email_content($email_heading, $email_data['html']);
+			$email_data['html'] = WP_Email_Template_Functions::email_content( $email_heading, $email_data['html'], false, $is_text_plain );
 		}
 
 		return $email_data;

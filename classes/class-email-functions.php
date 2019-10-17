@@ -380,7 +380,7 @@ class WP_Email_Template_Functions
 		return $template_html;
 	}
 
-	public static function email_content($email_heading='', $message='', $preview_mode=false) {
+	public static function email_content($email_heading='', $message='', $preview_mode=false, $is_text_plain=false) {
 		global $wp_email_template_fonts_face;
 		global $wp_email_template_general;
 		$html = '';
@@ -393,8 +393,13 @@ class WP_Email_Template_Functions
 			}
 		}
 
-		if (stristr($message, '<!--NO_USE_EMAIL_TEMPLATE-->') === false )
+		if (stristr($message, '<!--NO_USE_EMAIL_TEMPLATE-->') === false ) {
 			$html .= WP_Email_Template_Functions::email_header($email_heading);
+		}
+
+		if ( $is_text_plain ) {
+			$message = htmlentities( $message );
+		}
 
 		// Just get content from body tag if message include full html structure
 		if ( stristr( $message, '<html' ) !== false || stristr( $message, '<body' ) !== false ) {
