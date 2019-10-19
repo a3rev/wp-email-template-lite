@@ -125,7 +125,7 @@ class WP_Email_Template_Admin_Page extends WP_Email_Tempate_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function tabs_include() {
 		
-		if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && $_GET['page'] == 'wp_email_template' ) {
+		if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) == 'wp_email_template' ) {
 			add_action( 'muplugins_loaded' , array( $this , 'fixed_conflicted_mandrill' ) );
 		}
 		

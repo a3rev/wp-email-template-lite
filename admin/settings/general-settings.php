@@ -189,7 +189,7 @@ class WP_Email_Template_General_Settings extends WP_Email_Tempate_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
 		$preview_wp_email_template = '';
-		if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && $_GET['page'] == 'wp_email_template' ) {
+		if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) == 'wp_email_template' ) {
 			$preview_wp_email_template = wp_create_nonce("preview_wp_email_template");
 		}
 

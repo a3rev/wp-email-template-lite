@@ -38,9 +38,9 @@ class WP_Email_Template_Functions
 		if ($header_image !== FALSE && trim($header_image) != ''){
 			$header_image_html .= '<p style="margin:0px 0 0px 0;">';
 			if ( '' != trim( $header_image_url ) ) {
-				$header_image_html .= '<a href="'.$wp_email_template_style_header_image['header_image_url'].'" target="_blank">';
+				$header_image_html .= '<a href="'. esc_url( $header_image_url ).'" target="_blank">';
 			}
-			$header_image_html .= '<img class="header_image" style="max-width:'.$email_container_width.'px;" alt="'.get_bloginfo('name').'" src="'.trim(esc_attr( stripslashes( $header_image ) ) ).'">';
+			$header_image_html .= '<img class="header_image" style="max-width:'.$email_container_width.'px;" alt="'.get_bloginfo('name').'" src="'.trim(esc_url( $header_image ) ).'">';
 			if ( '' != trim( $header_image_url ) ) {
 				$header_image_html .= '</a>';
 			}
@@ -230,24 +230,24 @@ class WP_Email_Template_Functions
 		$background_pattern_image = 'url('.WP_EMAIL_TEMPLATE_IMAGES_URL.'/pattern.png)';
 
 		$facebook_html = '';
-		if (isset($wp_email_template_social_media['email_facebook']) && trim(esc_attr($wp_email_template_social_media['email_facebook'])) != '')
-			$facebook_html = '<a style="padding:0 2px;" href="'.trim( esc_attr (stripslashes($wp_email_template_social_media['email_facebook']) ) ).'" target="_blank" title="'.__('Facebook', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['facebook_icon'] ) != '' ) ? trim( $wp_email_template_social_media['facebook_icon'] ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_facebook.png' ) . '" alt="'.__('Facebook', 'wp-email-template' ).'" /></a>&nbsp;';
+		if (isset($wp_email_template_social_media['email_facebook']) && trim(esc_url($wp_email_template_social_media['email_facebook'])) != '')
+			$facebook_html = '<a style="padding:0 2px;" href="'.trim( esc_url($wp_email_template_social_media['email_facebook']) ).'" target="_blank" title="'.__('Facebook', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['facebook_icon'] ) != '' ) ? trim( esc_url( $wp_email_template_social_media['facebook_icon'] ) ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_facebook.png' ) . '" alt="'.__('Facebook', 'wp-email-template' ).'" /></a>&nbsp;';
 
 		$twitter_html = '';
-		if (isset($wp_email_template_social_media['email_twitter']) && trim(esc_attr($wp_email_template_social_media['email_twitter'])) != '')
-			$twitter_html = '<a style="padding:0 2px;" href="'.trim( esc_attr( stripslashes($wp_email_template_social_media['email_twitter']) ) ).'" target="_blank" title="'.__('Twitter', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['twitter_icon'] ) != '' ) ? trim( $wp_email_template_social_media['twitter_icon'] ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_twitter.png' ) . '" alt="'.__('Twitter', 'wp-email-template' ).'" /></a>&nbsp;';
+		if (isset($wp_email_template_social_media['email_twitter']) && trim(esc_url($wp_email_template_social_media['email_twitter'])) != '')
+			$twitter_html = '<a style="padding:0 2px;" href="'.trim( esc_url($wp_email_template_social_media['email_twitter']) ).'" target="_blank" title="'.__('Twitter', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['twitter_icon'] ) != '' ) ? trim( esc_url( $wp_email_template_social_media['twitter_icon'] ) ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_twitter.png' ) . '" alt="'.__('Twitter', 'wp-email-template' ).'" /></a>&nbsp;';
 
 		$linkedIn_html = '';
-		if (isset($wp_email_template_social_media['email_linkedIn']) && trim(esc_attr($wp_email_template_social_media['email_linkedIn'])) != '')
-			$linkedIn_html = '<a style="padding:0 2px;" href="'.trim( esc_attr( stripslashes($wp_email_template_social_media['email_linkedIn']) ) ).'" target="_blank" title="'.__('LinkedIn', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['linkedIn_icon'] ) != '' ) ? trim( $wp_email_template_social_media['linkedIn_icon'] ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_linkedin.png' ) . '" alt="'.__('LinkedIn', 'wp-email-template' ).'" /></a>&nbsp;';
+		if (isset($wp_email_template_social_media['email_linkedIn']) && trim(esc_url($wp_email_template_social_media['email_linkedIn'])) != '')
+			$linkedIn_html = '<a style="padding:0 2px;" href="'.trim( esc_url($wp_email_template_social_media['email_linkedIn']) ).'" target="_blank" title="'.__('LinkedIn', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['linkedIn_icon'] ) != '' ) ? trim( esc_url( $wp_email_template_social_media['linkedIn_icon'] ) ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_linkedin.png' ) . '" alt="'.__('LinkedIn', 'wp-email-template' ).'" /></a>&nbsp;';
 
 		$pinterest_html = '';
-		if (isset($wp_email_template_social_media['email_pinterest']) && trim(esc_attr($wp_email_template_social_media['email_pinterest'])) != '')
-			$pinterest_html = '<a style="padding:0 2px;" href="'.trim( esc_attr( stripslashes($wp_email_template_social_media['email_pinterest']) ) ).'" target="_blank" title="'.__('Pinterest', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['pinterest_icon'] ) != '' ) ? trim( $wp_email_template_social_media['pinterest_icon'] ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_pinterest.png' ) . '" alt="'.__('Pinterest', 'wp-email-template' ).'" /></a>&nbsp;';
+		if (isset($wp_email_template_social_media['email_pinterest']) && trim(esc_url($wp_email_template_social_media['email_pinterest'])) != '')
+			$pinterest_html = '<a style="padding:0 2px;" href="'.trim( esc_url($wp_email_template_social_media['email_pinterest']) ).'" target="_blank" title="'.__('Pinterest', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['pinterest_icon'] ) != '' ) ? trim( esc_url( $wp_email_template_social_media['pinterest_icon'] ) ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_pinterest.png' ) . '" alt="'.__('Pinterest', 'wp-email-template' ).'" /></a>&nbsp;';
 
 		$googleplus_html = '';
-		if (isset($wp_email_template_social_media['email_googleplus']) && trim(esc_attr($wp_email_template_social_media['email_googleplus'])) != '')
-			$googleplus_html = '<a style="padding:0 2px;" href="'.trim( esc_attr( stripslashes($wp_email_template_social_media['email_googleplus']) ) ).'" target="_blank" title="'.__('Google+', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['googleplus_icon'] ) != '' ) ? trim( $wp_email_template_social_media['googleplus_icon'] ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_googleplus.png' ) . '" alt="'.__('Google+', 'wp-email-template' ).'" /></a>&nbsp;';
+		if (isset($wp_email_template_social_media['email_googleplus']) && trim(esc_url($wp_email_template_social_media['email_googleplus'])) != '')
+			$googleplus_html = '<a style="padding:0 2px;" href="'.trim( esc_url($wp_email_template_social_media['email_googleplus']) ).'" target="_blank" title="'.__('Google+', 'wp-email-template' ).'"><img align="top" border="0" src="' . ( ( trim( $wp_email_template_social_media['googleplus_icon'] ) != '' ) ? trim( esc_url( $wp_email_template_social_media['googleplus_icon'] ) ) : WP_EMAIL_TEMPLATE_IMAGES_URL.'/icon_googleplus.png' ) . '" alt="'.__('Google+', 'wp-email-template' ).'" /></a>&nbsp;';
 
 		$follow_text = '';
 		if (trim($facebook_html) != '' || trim($twitter_html) != '' || trim($linkedIn_html) != '' || trim($pinterest_html) != '' || trim($googleplus_html) != '')
@@ -304,23 +304,13 @@ class WP_Email_Template_Functions
 
 		$file 	= 'email_header.html';
 		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
-			// $header_template_path = get_stylesheet_directory() . '/emails/'. $file;
-			$header_template_path = STYLESHEETPATH . '/emails/'. $file;
 			$header_template_url = get_stylesheet_directory_uri() . '/emails/'. $file;
 		} else {
-
-			$header_template_path = WP_EMAIL_TEMPLATE_DIR . '/emails/'. $file;
 			$header_template_url = WP_EMAIL_TEMPLATE_URL . '/emails/'. $file;
 		}
 
-		$template_html = file_get_contents($header_template_path);
-		if ($template_html == false) {
-			$ch = curl_init($header_template_url);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$template_html = curl_exec($ch);
-			curl_close($ch);
-		}
+		$response      = wp_remote_get( $header_template_url );
+		$template_html = wp_remote_retrieve_body( $response );
 
 		if ( 'no' == $wp_email_template_style_header['show_email_title'] ) {
 			$pattern = '/\<\!\-\-show_email_title_start\-\-\>[\s\S]+?\<\!\-\-show_email_title_end\-\-\>/';
@@ -337,23 +327,13 @@ class WP_Email_Template_Functions
 		$file 	= 'email_footer.html';
 
 		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
-			// $footer_template_path = get_stylesheet_directory() . '/emails/'. $file;
-			$footer_template_path = STYLESHEETPATH . '/emails/'. $file;
 			$footer_template_url = get_stylesheet_directory_uri() . '/emails/'. $file;
 		} else {
-			$footer_template_path = WP_EMAIL_TEMPLATE_DIR . '/emails/'. $file;
 			$footer_template_url = WP_EMAIL_TEMPLATE_URL . '/emails/'. $file;
 		}
 
-		$template_html = file_get_contents($footer_template_path);
-		if ($template_html == false) {
-			$ch = curl_init($footer_template_url);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$template_html = curl_exec($ch);
-			curl_close($ch);
-		}
-
+		$response      = wp_remote_get( $footer_template_url );
+		$template_html = wp_remote_retrieve_body( $response );
 		$template_html = WP_Email_Template_Functions::replace_shortcode_footer($template_html);
 
 		$h1_font     = 'font:italic 26px Century Gothic, sans-serif !important; color: #000000 !important;';

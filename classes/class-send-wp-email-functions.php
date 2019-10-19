@@ -174,7 +174,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 	}
 	
 	public function mandrill_api_key_invalid() {
-		if ( in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && $_GET['page'] == 'send_wp_emails' ) return;
+		if ( in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) == 'send_wp_emails' ) return;
 		
 		if ( get_option( 'wp_et_mandrill_api_key_valid', 0 ) != 1 ) {
 			echo '<div class="error"><p>'. __( "WP Email Template: You are using Invalid API key for Mandrill", 'wp-email-template' ) . '</p></div>';

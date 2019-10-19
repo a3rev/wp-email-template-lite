@@ -50,7 +50,7 @@ class WP_Email_Template_Hook_Filter
 			ob_get_clean();
 			$header = WP_Email_Template_Functions::email_header($email_heading);
 
-			if (isset($_REQUEST['preview_woocommerce_mail']) && $_REQUEST['preview_woocommerce_mail'] == 'true') {
+			if (isset($_REQUEST['preview_woocommerce_mail']) && sanitize_text_field( $_REQUEST['preview_woocommerce_mail'] ) == 'true') {
 				$template_notice = WP_Email_Template_Functions::apply_email_template_notice( __('Attention! You have selected to apply your WP Email Template to all WooCommerce Emails. Go to Settings in your WordPress admin sidebar > Email Template to customize this template or to reactivate the WooCommerce Email Template.', 'wp-email-template' ) );
 				$header = str_replace('<!--EMAIL_TEMPLATE_NOTICE-->', $template_notice, $header);
 			}
@@ -156,7 +156,7 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 		$email_sending_option                   = $wp_et_send_wp_emails_general['email_sending_option'];
 		$sparkpost_template_id                  = $wp_et_sparkpost_provider_configuration['template_id'];
 
-		if ( ( ! isset( $_GET['action'] ) || $_GET['action'] != 'preview_wp_email_template' )
+		if ( ( ! isset( $_GET['action'] ) || sanitize_key( $_GET['action'] ) != 'preview_wp_email_template' )
 			&& $email_sending_option == 'provider'
 			&& $get_email_delivery_provider == 'sparkpost'
 			&& '' != trim( $sparkpost_template_id ) ) {
@@ -233,14 +233,14 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 					$name    = trim( $name );
 					$content = trim( $content );
 
-					if ( 'content-type' === $name ) {
+					if ( 'content-type' === strtolower( $name ) ) {
 						if ( strpos( $content, ';' ) !== false ) {
 							list( $type, $charset_content ) = explode( ';', $content );
-							$content_type                   = trim( $type );
+							$content_type                   = trim( strtolower( $type ) );
 
 							// Avoid setting an empty $content_type.
 						} elseif ( '' !== trim( $content ) ) {
-							$content_type = trim( $content );
+							$content_type = trim( strtolower( $content ) );
 						}
 
 						break;
@@ -270,7 +270,7 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 
 	public static function change_default_wp_mail_from( $from_email = '' ) {
 		// Get the site domain and get rid of www.
-		$sitename = strtolower( $_SERVER['SERVER_NAME'] );
+		$sitename = strtolower( sanitize_text_field( $_SERVER['SERVER_NAME'] ) );
 		if ( substr( $sitename, 0, 4 ) == 'www.' ) {
 			$sitename = substr( $sitename, 4 );
 		}

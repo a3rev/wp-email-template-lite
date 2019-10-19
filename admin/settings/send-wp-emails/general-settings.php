@@ -125,7 +125,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 			update_option( $this->option_name, $settings_array );
 		}
 		if ( isset( $_POST['wp-email-template-send-test-email-now'] ) ) {
-			$wp_email_template_test_send_email = trim( $_POST['wp_email_template_test_send_email'] );
+			$wp_email_template_test_send_email = trim( sanitize_text_field( $_POST['wp_email_template_test_send_email'] ) );
 			update_option( 'wp_email_template_test_send_email', $wp_email_template_test_send_email );
 			if ( '' != trim( $wp_email_template_test_send_email ) ) {
 
@@ -331,7 +331,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 		if ( is_admin() ) {
 			global $email_delivery_provider;
 			if ( isset( $_POST['wp_et_send_wp_emails_general'] ) )  {
-				$email_delivery_provider = $_POST['wp_et_send_wp_emails_general']['email_delivery_provider'];
+				$email_delivery_provider = sanitize_text_field( $_POST['wp_et_send_wp_emails_general']['email_delivery_provider'] );
 			} else {
 				$wp_et_send_wp_emails_general = get_option( 'wp_et_send_wp_emails_general', array( 'email_delivery_provider' => 'smtp' ) );
 				$email_delivery_provider = $wp_et_send_wp_emails_general['email_delivery_provider'];
