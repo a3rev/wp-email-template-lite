@@ -106,6 +106,7 @@ class WP_ET_Send_WP_Emails_SparkPost_Settings
 			array(
 				'class'		=> 'sparkpost_api_connect_container',
                 'type' 		=> 'heading',
+                'desc'		=> ! function_exists( 'curl_init' ) ? '<div style="color: red; font-weight: bold;">'. __( "CURL is disabled on this server so you can't use HTTP API connect type for SparkPost.", 'wp-email-template' ) .'</div>' : '',
            	),
 			array(  
 				'name' 		=> __( 'SparkPost Template', 'wp-email-template' ),

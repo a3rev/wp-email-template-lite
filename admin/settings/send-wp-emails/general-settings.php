@@ -623,6 +623,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 			array(
 				'class'		=> 'mandrill_api_connect_container',
                 'type' 		=> 'heading',
+                'desc'		=> ! function_exists( 'curl_init' ) ? '<div style="color: red; font-weight: bold;">'. __( "CURL is disabled on this server so you can't use API connect type for Mandrill.", 'wp-email-template' ) .'</div>' : '',
            	),
 			array(  
 				'name' 		=> __( 'Mandrill API', 'wp-email-template' ),

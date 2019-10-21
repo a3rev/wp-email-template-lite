@@ -125,7 +125,11 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 			add_action( 'phpmailer_init', array( $wp_et_smtp_class, 'phpmailer_init' ), 1001 );
 
 		} else {
-			if( function_exists('wp_mail') ) {
+
+			// Check if curl is enabled
+			if ( ! function_exists( 'curl_init' ) ) {
+				add_action( 'admin_notices', array( $this, 'check_curl_is_enabled' ) );
+			} elseif( function_exists('wp_mail') ) {
 				add_action( 'admin_notices', array( $this, 'wp_mail_declared' ) );
 			} else {
 				add_action( 'admin_notices', array( $this, 'mandrill_api_key_invalid' ) );
@@ -154,7 +158,11 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 			add_action( 'phpmailer_init', array( $wp_et_sparkpost_functions, 'smtp_api_phpmailer_init' ), 1001 );
 
 		} else {
-			if( function_exists('wp_mail') ) {
+
+			// Check if curl is enabled
+			if ( ! function_exists( 'curl_init' ) ) {
+				add_action( 'admin_notices', array( $this, 'check_curl_is_enabled' ) );
+			} elseif( function_exists('wp_mail') ) {
 				add_action( 'admin_notices', array( $this, 'wp_mail_declared' ) );
 			} else {
 				add_action( 'admin_notices', array( $this, 'sparkpost_send_email_error_notice' ) );
@@ -167,6 +175,10 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 				}
 			}
 		}
+	}
+
+	public function check_curl_is_enabled() {
+		echo '<div class="error"><p>'. __( "WP Email Template: CURL is disabled on this server so you can't use API connect type for Mandrill or SparkPost.", 'wp-email-template' ) . '</p></div>';
 	}
 
 	public function wp_mail_declared() {
@@ -193,6 +205,12 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 	}
 	
 	public function check_mandrill_api_key( $api_key = '' ) {
+
+		// Check if curl is enabled
+		if ( ! function_exists('curl_init') ) {
+			return false;
+		}
+
 		try {
 			require_once WP_EMAIL_TEMPLATE_DIR. '/includes/mandrill/Mandrill.php';
 			$mandrill = new Mandrill( $api_key );

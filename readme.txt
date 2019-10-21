@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
 Tested up to: 5.2.3
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,13 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.3.1 - 2019/10/21 =
+* This maintenance update is further tweaks in security hardening of the plugins code. 
+* Tweak - Check CURL is enabled on server to use API connection type for Mandrill or SparkPost as site email sender. 
+* Tweak - Show text warning to webmaster on Mandrill and SparkPost admin panels to advise that CURL is not on their server and that they will have to use SMTP connect type for those.
+* Tweak - Update Simple HTML Dom lib to latest version 1.9.1
+* Tweak - Remove the hard coded PHP error_reporting display errors false from compile sass to css
 
 = 2.3.0 - 2019/10/19 =
 * This upgrade follows a full security review of the plugins code. Harden code in line with industry best practices, plus a fix for a HTML bug in release version 2.2.11.
@@ -621,6 +628,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.3.1 =
+This maintenance update is further tweaks in security hardening of the plugins code.
 
 = 2.3.0 =
 This upgrade follows a full security review of the plugins code. Harden code in line with industry best practices, plus a fix for a HTML bug in release version 2.2.11
