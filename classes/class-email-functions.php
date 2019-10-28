@@ -40,7 +40,7 @@ class WP_Email_Template_Functions
 			if ( '' != trim( $header_image_url ) ) {
 				$header_image_html .= '<a href="'. esc_url( $header_image_url ).'" target="_blank">';
 			}
-			$header_image_html .= '<img class="header_image" style="max-width:'.$email_container_width.'px;" alt="'.get_bloginfo('name').'" src="'.trim(esc_url( $header_image ) ).'">';
+			$header_image_html .= '<img class="header_image" style="max-width:'.$email_container_width.'px;display:block;" alt="'.get_bloginfo('name').'" src="'.trim(esc_url( $header_image ) ).'">';
 			if ( '' != trim( $header_image_url ) ) {
 				$header_image_html .= '</a>';
 			}
@@ -304,13 +304,18 @@ class WP_Email_Template_Functions
 
 		$file 	= 'email_header.html';
 		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
+			$header_template_path = STYLESHEETPATH . '/emails/'. $file;
 			$header_template_url = get_stylesheet_directory_uri() . '/emails/'. $file;
 		} else {
+			$header_template_path = WP_EMAIL_TEMPLATE_DIR . '/emails/'. $file;
 			$header_template_url = WP_EMAIL_TEMPLATE_URL . '/emails/'. $file;
 		}
 
-		$response      = wp_remote_get( $header_template_url );
-		$template_html = wp_remote_retrieve_body( $response );
+		ob_start();
+
+		include $header_template_path;
+
+		$template_html = ob_get_clean();
 
 		if ( 'no' == $wp_email_template_style_header['show_email_title'] ) {
 			$pattern = '/\<\!\-\-show_email_title_start\-\-\>[\s\S]+?\<\!\-\-show_email_title_end\-\-\>/';
@@ -327,13 +332,19 @@ class WP_Email_Template_Functions
 		$file 	= 'email_footer.html';
 
 		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
+			$footer_template_path = STYLESHEETPATH . '/emails/'. $file;
 			$footer_template_url = get_stylesheet_directory_uri() . '/emails/'. $file;
 		} else {
+			$footer_template_path = WP_EMAIL_TEMPLATE_DIR . '/emails/'. $file;
 			$footer_template_url = WP_EMAIL_TEMPLATE_URL . '/emails/'. $file;
 		}
 
-		$response      = wp_remote_get( $footer_template_url );
-		$template_html = wp_remote_retrieve_body( $response );
+		ob_start();
+
+		include $footer_template_path;
+
+		$template_html = ob_get_clean();
+
 		$template_html = WP_Email_Template_Functions::replace_shortcode_footer($template_html);
 
 		$h1_font     = 'font:italic 26px Century Gothic, sans-serif !important; color: #000000 !important;';
@@ -377,9 +388,13 @@ class WP_Email_Template_Functions
 			$html .= WP_Email_Template_Functions::email_header($email_heading);
 		}
 
+		// Sanitise orignal message if orignal content type of email is text/plain for avoid HTML injection
 		if ( $is_text_plain ) {
 			$message = htmlentities( $message );
 		}
+
+		// Then apply new content type for this email that support HTML from template of plugin
+		add_filter( 'wp_mail_content_type', array( 'WP_Email_Template_Hook_Filter', 'set_content_type' ), 101 );
 
 		// Just get content from body tag if message include full html structure
 		if ( stristr( $message, '<html' ) !== false || stristr( $message, '<body' ) !== false ) {

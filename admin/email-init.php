@@ -73,7 +73,6 @@ add_action('woocommerce_email_footer', array('WP_Email_Template_Hook_Filter', 'w
 add_action('woocommerce_email_footer', array('WP_Email_Template_Hook_Filter', 'woo_email_footer_marker_end'), 100 );
 
 // Apply the email template to wp_mail of wordpress
-add_filter('wp_mail_content_type', array('WP_Email_Template_Hook_Filter', 'set_content_type'), 20);
 add_filter('wp_mail', array('WP_Email_Template_Hook_Filter', 'change_wp_mail'), 20);
 
 // Filter to change the default email address wordpress@domain.com and default from name 'WordPress' for Default Provider

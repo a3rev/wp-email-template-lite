@@ -247,12 +247,17 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 					}
 				}
 			}
+		}
 
-			// Set Content-Type and charset
-			// If we don't have a content-type from the input headers
-			if ( isset( $content_type ) && 'text/plain' !== $content_type ) {
-				$is_text_plain = false;
-			}
+		// Set Content-Type and charset
+		// If we don't have a content-type from the input headers
+		if ( ! isset( $content_type ) ) {
+			$content_type = 'text/plain';
+		}
+
+		$content_type = apply_filters( 'wp_mail_content_type', $content_type );
+		if ( 'text/plain' !== $content_type ) {
+			$is_text_plain = false;
 		}
 
 		$email_heading = $email_data['subject'] ;

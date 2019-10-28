@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
 Tested up to: 5.2.3
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,10 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.3.2 - 2019/10/28 =
+* This maintenance update fixes Cloudflare minify blocking header and footer content from being loaded in emails. 
+* Fix - Header and Footer content being blocked by Cloudflare minification. Replace wp_remote_get to add header and footer content in Preview and email with include part template to resolve the issue.
 
 = 2.3.1 - 2019/10/21 =
 * This maintenance update is further tweaks in security hardening of the plugins code. 
@@ -628,6 +632,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.3.2 =
+This maintenance update fixes Cloudflare minify blocking header and footer content from being loaded in emails.
 
 = 2.3.1 =
 This maintenance update is further tweaks in security hardening of the plugins code.
