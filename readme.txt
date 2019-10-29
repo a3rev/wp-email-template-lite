@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 4.5
 Tested up to: 5.2.3
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,11 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.3.3 - 2019/10/29 =
+* This maintenance update has a tweak for Gravity Forms table display in emails and a fix for template header image alignment
+* Tweak - Add a container for Gravity Forms all_fields table to apply font styles to the table. 
+* Fix - Template header image horizontal alignment option
 
 = 2.3.2 - 2019/10/28 =
 * This maintenance update fixes Cloudflare minify blocking header and footer content from being loaded in emails. 
@@ -632,6 +637,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.3.3 =
+This maintenance update has a tweak for Gravity Forms table display in emails and a fix for template header image alignment
 
 = 2.3.2 =
 This maintenance update fixes Cloudflare minify blocking header and footer content from being loaded in emails.

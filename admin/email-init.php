@@ -72,6 +72,9 @@ add_action('woocommerce_email_footer', array('WP_Email_Template_Hook_Filter', 'w
 // Add marker at end of email template footer from woocommerce
 add_action('woocommerce_email_footer', array('WP_Email_Template_Hook_Filter', 'woo_email_footer_marker_end'), 100 );
 
+// Add container for Gravity table
+add_filter( 'gform_pre_replace_merge_tags', array( 'WP_Email_Template_Hook_Filter', 'add_container_gravity_table' ), 0, 7 );
+
 // Apply the email template to wp_mail of wordpress
 add_filter('wp_mail', array('WP_Email_Template_Hook_Filter', 'change_wp_mail'), 20);
 

@@ -129,6 +129,21 @@ class WP_Email_Template_Hook_Filter
 		return $styles;
 	}
 
+	public static function add_container_gravity_table( $text, $form, $lead, $url_encode, $esc_html, $nl2br, $format ) {
+
+		if ( 'html' === $format && stristr( $text, '{all_fields' ) !== false ) {
+			$matches = array();
+
+			preg_match_all( '/{all_fields(?::(.*?))?}/i', $text, $matches, PREG_SET_ORDER );
+
+			foreach ( $matches as $match ) {
+				$text = str_replace( $match[0], '<div class="gravity-form-table">'.$match[0].'</div>', $text );
+			}
+		}
+
+		return $text;
+	}
+
 	public static function preview_wp_email_template() {
 		check_ajax_referer( 'preview_wp_email_template', 'security' );
 

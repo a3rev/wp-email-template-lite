@@ -40,7 +40,7 @@ class WP_Email_Template_Functions
 			if ( '' != trim( $header_image_url ) ) {
 				$header_image_html .= '<a href="'. esc_url( $header_image_url ).'" target="_blank">';
 			}
-			$header_image_html .= '<img class="header_image" style="max-width:'.$email_container_width.'px;display:block;" alt="'.get_bloginfo('name').'" src="'.trim(esc_url( $header_image ) ).'">';
+			$header_image_html .= '<img class="header_image" style="max-width:'.$email_container_width.'px;" alt="'.get_bloginfo('name').'" src="'.trim(esc_url( $header_image ) ).'">';
 			if ( '' != trim( $header_image_url ) ) {
 				$header_image_html .= '</a>';
 			}
