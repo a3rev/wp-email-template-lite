@@ -35,16 +35,16 @@ function wp_email_template_init() {
 add_action('init', 'wp_email_template_init');
 
 // Add custom style to dashboard
-add_action( 'admin_enqueue_scripts', array( 'WP_Email_Template_Hook_Filter', 'a3_wp_admin' ) );
+add_action( 'admin_enqueue_scripts', array( '\A3Rev\EmailTemplate\Hook_Filter', 'a3_wp_admin' ) );
 
 // Add extra link on left of Deactivate link on Plugin manager page
-add_action('plugin_action_links_'.WP_EMAIL_TEMPLATE_NAME, array('WP_Email_Template_Hook_Filter', 'settings_plugin_links') );
+add_action('plugin_action_links_'.WP_EMAIL_TEMPLATE_NAME, array('\A3Rev\EmailTemplate\Hook_Filter', 'settings_plugin_links') );
 
 // Add admin sidebar menu css
-add_action( 'admin_enqueue_scripts', array( 'WP_Email_Template_Hook_Filter', 'admin_sidebar_menu_css' ) );
+add_action( 'admin_enqueue_scripts', array( '\A3Rev\EmailTemplate\Hook_Filter', 'admin_sidebar_menu_css' ) );
 
 // Add text on right of Visit the plugin on Plugin manager page
-add_filter( 'plugin_row_meta', array('WP_Email_Template_Hook_Filter', 'plugin_extra_links'), 10, 2 );
+add_filter( 'plugin_row_meta', array('\A3Rev\EmailTemplate\Hook_Filter', 'plugin_extra_links'), 10, 2 );
 
 
 // Need to call Admin Init to show Admin UI
@@ -52,38 +52,38 @@ global $wp_email_template_admin_init;
 $wp_email_template_admin_init->init();
 
 // Add upgrade notice to Dashboard pages
-add_filter( $wp_email_template_admin_init->plugin_name . '_plugin_extension_boxes', array( 'WP_Email_Template_Hook_Filter', 'plugin_extension_box' ) );
+add_filter( $wp_email_template_admin_init->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\EmailTemplate\Hook_Filter', 'plugin_extension_box' ) );
 
-add_action('wp_ajax_preview_wp_email_template', array('WP_Email_Template_Hook_Filter', 'preview_wp_email_template') );
-add_action('wp_ajax_nopriv_preview_wp_email_template', array('WP_Email_Template_Hook_Filter', 'preview_wp_email_template') );
+add_action('wp_ajax_preview_wp_email_template', array('\A3Rev\EmailTemplate\Hook_Filter', 'preview_wp_email_template') );
+add_action('wp_ajax_nopriv_preview_wp_email_template', array('\A3Rev\EmailTemplate\Hook_Filter', 'preview_wp_email_template') );
 
 // Compatibility with Formidable plugin with disable the encoding subject title
-add_filter( 'frm_encode_subject', array( 'WP_Email_Template_Hook_Filter', 'disable_formidable_encode_subject_title' ), 10, 2 );
+add_filter( 'frm_encode_subject', array( '\A3Rev\EmailTemplate\Hook_Filter', 'disable_formidable_encode_subject_title' ), 10, 2 );
 
 // Add marker at start of email template header from woocommerce
-add_action('woocommerce_email_header', array('WP_Email_Template_Hook_Filter', 'woo_email_header_marker_start'), 1 );
+add_action('woocommerce_email_header', array('\A3Rev\EmailTemplate\Hook_Filter', 'woo_email_header_marker_start'), 1 );
 
 // Add marker at end of email template header from woocommerce
-add_action('woocommerce_email_header', array('WP_Email_Template_Hook_Filter', 'woo_email_header_marker_end'), 100 );
+add_action('woocommerce_email_header', array('\A3Rev\EmailTemplate\Hook_Filter', 'woo_email_header_marker_end'), 100 );
 
 // Add marker at start of email template footer from woocommerce
-add_action('woocommerce_email_footer', array('WP_Email_Template_Hook_Filter', 'woo_email_footer_marker_start'), 1 );
+add_action('woocommerce_email_footer', array('\A3Rev\EmailTemplate\Hook_Filter', 'woo_email_footer_marker_start'), 1 );
 
 // Add marker at end of email template footer from woocommerce
-add_action('woocommerce_email_footer', array('WP_Email_Template_Hook_Filter', 'woo_email_footer_marker_end'), 100 );
+add_action('woocommerce_email_footer', array('\A3Rev\EmailTemplate\Hook_Filter', 'woo_email_footer_marker_end'), 100 );
 
 // Add container for Gravity table
-add_filter( 'gform_pre_replace_merge_tags', array( 'WP_Email_Template_Hook_Filter', 'add_container_gravity_table' ), 0, 7 );
+add_filter( 'gform_pre_replace_merge_tags', array( '\A3Rev\EmailTemplate\Hook_Filter', 'add_container_gravity_table' ), 0, 7 );
 
 // Apply the email template to wp_mail of wordpress
-add_filter('wp_mail', array('WP_Email_Template_Hook_Filter', 'change_wp_mail'), 20);
+add_filter('wp_mail', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_wp_mail'), 20);
 
 // Filter to change the default email address wordpress@domain.com and default from name 'WordPress' for Default Provider
-add_filter('wp_mail_from', array('WP_Email_Template_Hook_Filter', 'change_default_wp_mail_from'), 1);
-add_filter('wp_mail_from_name', array('WP_Email_Template_Hook_Filter', 'change_default_wp_mail_from_name'), 1);
+add_filter('wp_mail_from', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_default_wp_mail_from'), 1);
+add_filter('wp_mail_from_name', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_default_wp_mail_from_name'), 1);
 
 // For multipart messages
-add_action( 'phpmailer_init', array( 'WP_Email_Template_Hook_Filter', 'handle_multipart' ) );
+add_action( 'phpmailer_init', array( '\A3Rev\EmailTemplate\Hook_Filter', 'handle_multipart' ) );
 
 // Check upgrade functions
 add_action('init', 'a3rev_wp_email_template_lite_upgrade_plugin');
@@ -153,5 +153,3 @@ function a3rev_wp_email_template_lite_upgrade_plugin () {
 	update_option('a3rev_wp_email_template_version', '2.3.6');
 	update_option('a3rev_wp_email_template_lite_version', WP_EMAIL_TEMPLATE_VERSION );
 }
-
-?>

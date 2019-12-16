@@ -16,7 +16,14 @@
  * plugin_extra_links()
  * settings_plugin_links()
  */
-class WP_Email_Template_Hook_Filter
+
+namespace A3Rev\EmailTemplate;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+class Hook_Filter
 {
 
 	public static function check_apply_template_for_woocommerce_emails() {
@@ -48,10 +55,10 @@ class WP_Email_Template_Hook_Filter
 		if ( self::check_apply_template_for_woocommerce_emails() ) {
 			echo '<!--WOO_EMAIL_TEMPLATE_HEADER_END-->';
 			ob_get_clean();
-			$header = WP_Email_Template_Functions::email_header($email_heading);
+			$header = Functions::email_header($email_heading);
 
 			if (isset($_REQUEST['preview_woocommerce_mail']) && sanitize_text_field( $_REQUEST['preview_woocommerce_mail'] ) == 'true') {
-				$template_notice = WP_Email_Template_Functions::apply_email_template_notice( __('Attention! You have selected to apply your WP Email Template to all WooCommerce Emails. Go to Settings in your WordPress admin sidebar > Email Template to customize this template or to reactivate the WooCommerce Email Template.', 'wp-email-template' ) );
+				$template_notice = Functions::apply_email_template_notice( __('Attention! You have selected to apply your WP Email Template to all WooCommerce Emails. Go to Settings in your WordPress admin sidebar > Email Template to customize this template or to reactivate the WooCommerce Email Template.', 'wp-email-template' ) );
 				$header = str_replace('<!--EMAIL_TEMPLATE_NOTICE-->', $template_notice, $header);
 			}
 
@@ -75,7 +82,7 @@ class WP_Email_Template_Hook_Filter
 		if ( self::check_apply_template_for_woocommerce_emails() ) {
 			echo '<!--WOO_EMAIL_TEMPLATE_FOOTER_END-->';
 			ob_get_clean();
-			echo WP_Email_Template_Functions::email_footer();
+			echo Functions::email_footer();
 		}
 		echo '<!--NO_USE_EMAIL_TEMPLATE-->';
 	}
@@ -149,7 +156,7 @@ class WP_Email_Template_Hook_Filter
 
 		$email_heading = __('Email preview', 'wp-email-template' );
 
-		echo WP_Email_Template_Hook_Filter::preview_wp_email_content( $email_heading );
+		echo self::preview_wp_email_content( $email_heading );
 
 		die();
 	}
@@ -178,7 +185,7 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 			return $message;
 		}
 
-		return WP_Email_Template_Functions::email_content($email_heading, $message, true );
+		return Functions::email_content($email_heading, $message, true );
 
 	}
 
@@ -279,10 +286,10 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 		global $wp_email_original_message;
 		if ( isset( $email_data['message'] ) && stristr( $email_data['message'], '<!--NO_USE_EMAIL_TEMPLATE-->' ) === false ) {
 			$wp_email_original_message = $email_data['message'];
-			$email_data['message'] = WP_Email_Template_Functions::email_content( $email_heading, $email_data['message'], false, $is_text_plain );
+			$email_data['message'] = Functions::email_content( $email_heading, $email_data['message'], false, $is_text_plain );
 		} elseif ( isset( $email_data['html'] ) && stristr( $email_data['html'], '<!--NO_USE_EMAIL_TEMPLATE-->' ) === false ) {
 			$wp_email_original_message = $email_data['html'];
-			$email_data['html'] = WP_Email_Template_Functions::email_content( $email_heading, $email_data['html'], false, $is_text_plain );
+			$email_data['html'] = Functions::email_content( $email_heading, $email_data['html'], false, $is_text_plain );
 		}
 
 		return $email_data;
@@ -386,4 +393,3 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 		return $actions;
 	}
 }
-?>

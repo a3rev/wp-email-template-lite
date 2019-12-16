@@ -7,7 +7,14 @@
  * get_email_delivery_provider()
  * send_a_test_email()
  */
-class WP_Email_Template_Send_Wp_Emails_Functions
+
+namespace A3Rev\EmailTemplate;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+class Send_Wp_Emails_Functions
 {
 	public $get_email_delivery_provider = 'smtp';
 
@@ -43,10 +50,15 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 		}
 	}
 
-	public function godaddy_init() {
+	public function call_smtp_class() {
 		global $wp_et_smtp_class;
+		$wp_et_smtp_class = new \A3Rev\EmailTemplate\SMTP_Class();
+	}
 
-		require_once WP_EMAIL_TEMPLATE_DIR . '/includes/smtp.php';
+	public function godaddy_init() {
+
+		$this->call_smtp_class();
+		global $wp_et_smtp_class;
 
 		$wp_et_smtp_class->smtp_host 					= 'relay-hosting.secureserver.net';
 
@@ -54,11 +66,10 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 	}
 
 	public function smtp_init() {
+		$this->call_smtp_class();
 		global $wp_et_smtp_class;
 
 		$wp_et_smtp_provider_configuration = get_option( 'wp_et_smtp_provider_configuration', array() );
-
-		require_once WP_EMAIL_TEMPLATE_DIR . '/includes/smtp.php';
 
 		$wp_et_smtp_class->smtp_host 					= esc_attr( trim( $wp_et_smtp_provider_configuration['smtp_host'] ) );
 		$wp_et_smtp_class->smtp_port 					= esc_attr( trim( $wp_et_smtp_provider_configuration['smtp_port'] ) );
@@ -71,6 +82,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 	}
 
 	public function gmail_smtp_init() {
+		$this->call_smtp_class();
 		global $wp_et_smtp_class;
 
 		$wp_et_gmail_smtp_provider_configuration = get_option( 'wp_et_gmail_smtp_provider_configuration', array() );
@@ -84,8 +96,6 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 			$smtp_encrypt_type = 'tls';
 		}
 
-		require_once WP_EMAIL_TEMPLATE_DIR . '/includes/smtp.php';
-
 		$wp_et_smtp_class->smtp_host 					= 'smtp.gmail.com';
 		$wp_et_smtp_class->smtp_port 					= $smtp_port;
 		$wp_et_smtp_class->smtp_encrypt_type 			= $smtp_encrypt_type;
@@ -97,13 +107,14 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 	}
 
 	public function mandrill_init() {
-		global $wp_et_smtp_class;
 
 		$wp_et_mandrill_provider_configuration = get_option( 'wp_et_mandrill_provider_configuration', array() );
 
 		if ( $wp_et_mandrill_provider_configuration['mandrill_connect_type'] == 'smtp' ) {
 			add_action( 'admin_notices', array( $this, 'mandrill_api_key_invalid' ) );
-			require_once WP_EMAIL_TEMPLATE_DIR . '/includes/smtp.php';
+
+			$this->call_smtp_class();
+			global $wp_et_smtp_class;
 
 			$smtp_port = 587;
 			if ( isset( $wp_et_mandrill_provider_configuration['smtp_port'] ) ) {
@@ -146,14 +157,13 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 	}
 
 	public function sparkpost_init() {
-		global $wp_et_smtp_class;
 
 		$wp_et_sparkpost_provider_configuration = get_option( 'wp_et_sparkpost_provider_configuration', array() );
 
 		if ( $wp_et_sparkpost_provider_configuration['connect_type'] == 'smtp' ) {
 			add_action( 'admin_notices', array( $this, 'sparkpost_send_email_error_notice' ) );
 			require_once WP_EMAIL_TEMPLATE_DIR . '/includes/sparkpost.php';
-			$wp_et_sparkpost_functions = new WP_Email_Template_SparkPost_Functions();
+			$wp_et_sparkpost_functions = new \WP_Email_Template_SparkPost_Functions();
 
 			add_action( 'phpmailer_init', array( $wp_et_sparkpost_functions, 'smtp_api_phpmailer_init' ), 1001 );
 
@@ -170,7 +180,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 				// Check if Mandrill API Key don't have invalid message then define wp_mail function before w_mail of wp-includes/pluggable.php
 				function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
 					require_once WP_EMAIL_TEMPLATE_DIR . '/includes/sparkpost.php';
-					$wp_et_sparkpost_functions = new WP_Email_Template_SparkPost_Functions();
+					$wp_et_sparkpost_functions = new \WP_Email_Template_SparkPost_Functions();
 					return $wp_et_sparkpost_functions->http_api_send_email( $to, $subject, $message, $headers, $attachments );
 				}
 			}
@@ -213,7 +223,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 
 		try {
 			require_once WP_EMAIL_TEMPLATE_DIR. '/includes/mandrill/Mandrill.php';
-			$mandrill = new Mandrill( $api_key );
+			$mandrill = new \Mandrill( $api_key );
 			$result = $mandrill->users->ping();
 			if ( $result == 'PONG!' ) 
 				return true;
@@ -260,7 +270,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 		
 		try {
 			require_once WP_EMAIL_TEMPLATE_DIR. '/includes/mandrill/Mandrill.php';
-			$mandrill = new Mandrill( $wp_et_mandrill_provider_configuration['api_key'] );
+			$mandrill = new \Mandrill( $wp_et_mandrill_provider_configuration['api_key'] );
 						
 			extract( apply_filters( 'wp_mail', compact( 'to', 'subject', 'message', 'headers', 'attachments' ) ) );
 			$html = $message;
@@ -476,7 +486,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 		if ( !is_object( $phpmailer ) || !is_a( $phpmailer, 'PHPMailer' ) ) {
 			require_once ABSPATH . WPINC . '/class-phpmailer.php';
 			require_once ABSPATH . WPINC . '/class-smtp.php';
-			$phpmailer = new PHPMailer( true );
+			$phpmailer = new \PHPMailer( true );
 		}
 		
 		// Set SMTPDebug to true
@@ -484,7 +494,7 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 		
 		$email_heading = __('Email preview', 'wp-email-template' );
 				
-		$message = WP_Email_Template_Hook_Filter::preview_wp_email_content( $email_heading );
+		$message = Hook_Filter::preview_wp_email_content( $email_heading );
 		
 		add_filter('wp_mail_content_type', array( $this, 'preview_set_content_type'), 21 );
 		$result = wp_mail( $to_email, $email_heading, $message );
@@ -527,7 +537,3 @@ class WP_Email_Template_Send_Wp_Emails_Functions
 		return $content_type;
 	}
 }
-
-global $wp_et_send_wp_emails;
-$wp_et_send_wp_emails = new WP_Email_Template_Send_Wp_Emails_Functions();
-?>

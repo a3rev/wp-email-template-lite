@@ -37,11 +37,14 @@ class WP_Email_Template_SparkPost_Functions
 
 			//don't apply WP Email Template if this have use SparkPost Template
 			if ( '' != trim( $sparkpost_template_id ) ) {
-				remove_filter('wp_mail', array('WP_Email_Template_Hook_Filter', 'change_wp_mail'), 20);
+				remove_filter('wp_mail', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_wp_mail'), 20);
 				if ( function_exists( 'wp_specialchars_decode' ) ) {
 					$subject = wp_specialchars_decode( $subject, ENT_QUOTES );
 				}
 			}
+
+			$from_name = '';
+			$from_email = '';
 
 			extract( apply_filters( 'wp_mail', compact( 'to', 'subject', 'message', 'headers', 'attachments' ) ) );
 			$html = $message;
@@ -190,7 +193,7 @@ class WP_Email_Template_SparkPost_Functions
 				$sparkpost_message['attachments'] = self::process_attachments($sparkpost_message['attachments']);
 				if ( is_wp_error($sparkpost_message['attachments']) ) {
 					unset($sparkpost_message['attachments']);
-				} elseif ( ! is_array( $sparkpost_message['attachments'] ) || count( $sparkpost_message['attachments'] < 1 ) ) {	// some plugins return this value malformed.
+				} elseif ( ! is_array( $sparkpost_message['attachments'] ) || count( $sparkpost_message['attachments'] ) < 1 ) {	// some plugins return this value malformed.
 					unset($sparkpost_message['attachments']);
 				}
 			}
@@ -517,4 +520,3 @@ class WP_Email_Template_SparkPost_Functions
 		$phpmailer = apply_filters( 'wp_email_template_sparkpost_smtp_phpmailer_custom', $phpmailer );
 	}
 }
-?>

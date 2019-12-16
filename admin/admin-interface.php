@@ -745,6 +745,12 @@ class WP_Email_Template_Admin_Interface extends WP_Email_Tempate_Admin_UI
 								} else {
 									$option_value = sanitize_hex_color( $_POST[ $id_attribute ][ $key ] );
 								}
+							} elseif ( 'textarea' === $value['type'] ) {
+								if ( is_array( $_POST[ $id_attribute ][ $key ] ) ) {
+									$option_value = array_map( 'sanitize_textarea_field', $_POST[ $id_attribute ][ $key ] );
+								} else {
+									$option_value = sanitize_textarea_field( $_POST[ $id_attribute ][ $key ] );
+								}
 							} else {
 								if ( is_array( $_POST[ $id_attribute ][ $key ] ) ) {
 									$option_value = array_map( 'sanitize_text_field', $_POST[ $id_attribute ][ $key ] );
@@ -773,6 +779,12 @@ class WP_Email_Template_Admin_Interface extends WP_Email_Tempate_Admin_UI
 									$option_value = array_map( 'sanitize_hex_color', $_POST[ $id_attribute ] );
 								} else {
 									$option_value = sanitize_hex_color( $_POST[ $id_attribute ] );
+								}
+							} elseif ( 'textarea' === $value['type'] ) {
+								if ( is_array( $_POST[ $id_attribute ] ) ) {
+									$option_value = array_map( 'sanitize_textarea_field', $_POST[ $id_attribute ] );
+								} else {
+									$option_value = sanitize_textarea_field( $_POST[ $id_attribute ] );
 								}
 							} else {
 								if ( is_array( $_POST[ $id_attribute ] ) ) {
@@ -806,6 +818,12 @@ class WP_Email_Template_Admin_Interface extends WP_Email_Tempate_Admin_UI
 								} else {
 									$option_value = sanitize_hex_color( $_POST[ $option_name ][ $id_attribute ][ $key ] );
 								}
+							} elseif ( 'textarea' === $value['type'] ) {
+								if ( is_array( $_POST[ $option_name ][ $id_attribute ][ $key ] ) ) {
+									$option_value = array_map( 'sanitize_textarea_field', $_POST[ $option_name ][ $id_attribute ][ $key ] );
+								} else {
+									$option_value = sanitize_textarea_field( $_POST[ $option_name ][ $id_attribute ][ $key ] );
+								}
 							} else {
 								if ( is_array( $_POST[ $option_name ][ $id_attribute ][ $key ] ) ) {
 									$option_value = array_map( 'sanitize_text_field', $_POST[ $option_name ][ $id_attribute ][ $key ] );
@@ -834,6 +852,12 @@ class WP_Email_Template_Admin_Interface extends WP_Email_Tempate_Admin_UI
 									$option_value = array_map( 'sanitize_hex_color', $_POST[ $option_name ][ $id_attribute ] );
 								} else {
 									$option_value = sanitize_hex_color( $_POST[ $option_name ][ $id_attribute ] );
+								}
+							} elseif ( 'textarea' === $value['type'] ) {
+								if ( is_array( $_POST[ $option_name ][ $id_attribute ] ) ) {
+									$option_value = array_map( 'sanitize_textarea_field', $_POST[ $option_name ][ $id_attribute ] );
+								} else {
+									$option_value = sanitize_textarea_field( $_POST[ $option_name ][ $id_attribute ] );
 								}
 							} else {
 								if ( is_array( $_POST[ $option_name ][ $id_attribute ] ) ) {

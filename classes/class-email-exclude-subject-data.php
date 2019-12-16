@@ -1,9 +1,11 @@
 <?php
+namespace A3Rev\EmailTemplate;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-class WP_Email_Template_Exclude_Subject_Data
+class Exclude_Subject_Data
 {
 	/**
 	 * @var data table name
@@ -97,6 +99,3 @@ class WP_Email_Template_Exclude_Subject_Data
 	}
 
 }
-
-global $wp_email_template_exclude_subject_data;
-$wp_email_template_exclude_subject_data = new WP_Email_Template_Exclude_Subject_Data();

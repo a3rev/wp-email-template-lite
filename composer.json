@@ -1,0 +1,22 @@
+{
+    "name": "a3rev/wp-email-template",
+    "description": "This plugin automatically adds a professional, responsive, customizable, email browser optimized HTML template for all WordPress and WordPress plugin generated emails that are sent from your site to customers and admins. Works with any WordPress plugin including the e-commerce plugins WooCommerce and WP e-Commerce.",
+    "license": "GPLv2 or later",
+    "authors": [
+        {
+            "name": "a3rev Software",
+            "email": "admin@a3rev.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    },
+    "require": {
+        "php": ">=5.6|>=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "A3Rev\\EmailTemplate\\": [ "classes/", "includes/" ]
+        }
+    }
+}

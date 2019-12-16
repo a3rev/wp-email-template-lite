@@ -7,7 +7,14 @@
  * phpmailer_init()
  * godaddy_phpmailer_init()
  */
-class WP_Email_Template_SMTP_Class
+
+namespace A3Rev\EmailTemplate;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+class SMTP_Class
 {
 	public $smtp_host = '';
 	public $smtp_port = 25;
@@ -69,7 +76,3 @@ class WP_Email_Template_SMTP_Class
 		
 	}
 }
-
-global $wp_et_smtp_class;
-$wp_et_smtp_class = new WP_Email_Template_SMTP_Class();
-?>
