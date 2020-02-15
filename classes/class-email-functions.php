@@ -69,16 +69,16 @@ class Functions
 			$background_pattern_image= '';
 		}
 
-		global $wp_email_template_fonts_face, $wp_email_template_admin_interface;
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'fonts_face'}, ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'};
 
 		$external_link = '';
 
-		$background_colour         = str_replace( array( 'background-color:', '!important', ';' ), '', $wp_email_template_admin_interface->generate_background_color_css( $wp_email_template_general['background_colour'] ) );
+		$background_colour         = str_replace( array( 'background-color:', '!important', ';' ), '', ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_background_color_css( $wp_email_template_general['background_colour'] ) );
 
 		if( $apply_style_header_image ){
 			$header_image_margin_bottom    = 20;
 			$header_image_alignment        = stripslashes($wp_email_template_style_header_image['header_image_alignment']);
-			$header_image_background_color = str_replace( array( 'background-color:', '!important', ';' ), '', $wp_email_template_admin_interface->generate_background_color_css( $wp_email_template_style_header_image['header_image_background_color'] ) );
+			$header_image_background_color = str_replace( array( 'background-color:', '!important', ';' ), '', ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_background_color_css( $wp_email_template_style_header_image['header_image_background_color'] ) );
 			$header_image_padding_top      = stripslashes($wp_email_template_style_header_image['header_image_padding_top']);
 			$header_image_padding_bottom   = stripslashes($wp_email_template_style_header_image['header_image_padding_bottom']);
 			$header_image_padding_left     = stripslashes($wp_email_template_style_header_image['header_image_padding_left']);
@@ -87,11 +87,11 @@ class Functions
 			$header_image_margin_bottom    = stripslashes($wp_email_template_style_header_image['header_image_margin_bottom']);
 			$header_image_margin_left      = stripslashes($wp_email_template_style_header_image['header_image_margin_left']);
 			$header_image_margin_right     = stripslashes($wp_email_template_style_header_image['header_image_margin_right']);
-			$header_image_border_top       = str_replace("border:", "border-top:", $wp_email_template_admin_interface->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_top'] ));
-			$header_image_border_bottom    = str_replace("border:", "border-bottom:", $wp_email_template_admin_interface->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_bottom'] ));
-			$header_image_border_left      = str_replace("border:", "border-left:", $wp_email_template_admin_interface->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_left'] ));
-			$header_image_border_right     = str_replace("border:", "border-right:", $wp_email_template_admin_interface->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_right'] ));
-			$header_image_border_corner    = stripslashes($wp_email_template_admin_interface->generate_border_corner_css( $wp_email_template_style_header_image['header_image_border_corner'] ));
+			$header_image_border_top       = str_replace("border:", "border-top:", ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_top'] ));
+			$header_image_border_bottom    = str_replace("border:", "border-bottom:", ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_bottom'] ));
+			$header_image_border_left      = str_replace("border:", "border-left:", ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_left'] ));
+			$header_image_border_right     = str_replace("border:", "border-right:", ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_border_style_css( $wp_email_template_style_header_image['header_image_border_right'] ));
+			$header_image_border_corner    = stripslashes(${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_border_corner_css( $wp_email_template_style_header_image['header_image_border_corner'] ));
 			$header_image_border           = $header_image_border_top.$header_image_border_bottom.$header_image_border_left.$header_image_border_right.$header_image_border_corner;
 		}else{
 			$header_image_margin_bottom    = 0;
@@ -225,7 +225,7 @@ class Functions
 	}
 
 	public static function replace_shortcode_footer ($template_html='') {
-		global $wp_email_template_fonts_face, $wp_email_template_general, $wp_email_template_social_media, $wp_email_template_email_footer, $wp_email_template_admin_interface;
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'fonts_face'}, $wp_email_template_general, $wp_email_template_social_media, $wp_email_template_email_footer, ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'};
 
 		$email_footer_width = trim( $wp_email_template_general['email_container_width'] );
 		if ( $email_footer_width < 200 || $email_footer_width > 1280 ) {
@@ -264,7 +264,7 @@ class Functions
 			$background_pattern_image= '';
 		}
 
-		$background_colour         = str_replace( array( 'background-color:', '!important', ';' ), '', $wp_email_template_admin_interface->generate_background_color_css( $wp_email_template_general['background_colour'] ) );
+		$background_colour         = str_replace( array( 'background-color:', '!important', ';' ), '', ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'}->generate_background_color_css( $wp_email_template_general['background_colour'] ) );
 
 		$footer_font = 'font:normal 11px Arial, sans-serif !important; color: #999999 !important;';
 
@@ -335,7 +335,7 @@ class Functions
 	}
 
 	public static function email_footer() {
-		global $wp_email_template_fonts_face;
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'fonts_face'};
 		$file 	= 'email_footer.html';
 
 		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
@@ -379,7 +379,7 @@ class Functions
 	}
 
 	public static function email_content($email_heading='', $message='', $preview_mode=false, $is_text_plain=false) {
-		global $wp_email_template_fonts_face;
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'fonts_face'};
 		global $wp_email_template_general;
 		$html = '';
 

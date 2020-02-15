@@ -8,10 +8,10 @@ function wp_email_template_install(){
 	$wp_email_template_exclude_subject_data->install_database();
 
 	// Remove house keeping option of another version
-	delete_option( $wp_email_template_admin_init->plugin_name . '_clean_on_deletion' );
+	delete_option( ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->plugin_name . '_clean_on_deletion' );
 
-	global $wp_email_template_admin_init;
-	delete_metadata( 'user', 0, $wp_email_template_admin_init->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
+	global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
+	delete_metadata( 'user', 0, ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
 
 	update_option('a3rev_wp_email_just_installed', true);
 }
@@ -24,8 +24,8 @@ function wp_email_template_init() {
 		delete_option('a3rev_wp_email_just_installed');
 
 		// Set Settings Default from Admin Init
-		global $wp_email_template_admin_init;
-		$wp_email_template_admin_init->set_default_settings();
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
+		${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->set_default_settings();
 	}
 
 	wp_email_template_plugin_textdomain();
@@ -48,11 +48,11 @@ add_filter( 'plugin_row_meta', array('\A3Rev\EmailTemplate\Hook_Filter', 'plugin
 
 
 // Need to call Admin Init to show Admin UI
-global $wp_email_template_admin_init;
-$wp_email_template_admin_init->init();
+global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
+${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->init();
 
 // Add upgrade notice to Dashboard pages
-add_filter( $wp_email_template_admin_init->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\EmailTemplate\Hook_Filter', 'plugin_extension_box' ) );
+add_filter( ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\EmailTemplate\Hook_Filter', 'plugin_extension_box' ) );
 
 add_action('wp_ajax_preview_wp_email_template', array('\A3Rev\EmailTemplate\Hook_Filter', 'preview_wp_email_template') );
 add_action('wp_ajax_nopriv_preview_wp_email_template', array('\A3Rev\EmailTemplate\Hook_Filter', 'preview_wp_email_template') );
@@ -119,8 +119,8 @@ function a3rev_wp_email_template_lite_upgrade_plugin () {
 
 		include( WP_EMAIL_TEMPLATE_DIR. '/includes/updates/wp-email-update-1.2.0.php' );
 
-		global $wp_email_template_admin_init;
-		$wp_email_template_admin_init->set_default_settings();
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
+		${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->set_default_settings();
 	}
 
 	if ( version_compare( get_option( 'a3rev_wp_email_template_lite_version'), '1.3.3' ) === -1 ) {
@@ -128,8 +128,8 @@ function a3rev_wp_email_template_lite_upgrade_plugin () {
 
 		include( WP_EMAIL_TEMPLATE_DIR. '/includes/updates/wp-email-update-1.3.3.php' );
 
-		global $wp_email_template_admin_init;
-		$wp_email_template_admin_init->set_default_settings();
+		global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
+		${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->set_default_settings();
 	}
 
 	if ( version_compare( get_option( 'a3rev_wp_email_template_lite_version'), '1.4.0' ) === -1 ) {

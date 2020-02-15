@@ -1,9 +1,14 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+
+namespace A3Rev\EmailTemplate\FrameWork\Tabs {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WP Email Template Style Tab
 
@@ -22,7 +27,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_Style_Body_Tab extends WP_Email_Tempate_Admin_UI
+class Style_Body extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -103,7 +108,8 @@ class WP_Email_Template_Style_Body_Tab extends WP_Email_Tempate_Admin_UI
 	public function settings_include() {
 		
 		// Includes Settings file
-		include_once( $this->admin_plugin_dir() . '/settings/style-body-settings.php' );
+		global $wp_email_template_style_body_settings;
+		$wp_email_template_style_body_settings = new FrameWork\Settings\Style_Body();
 		
 	}
 	
@@ -120,8 +126,10 @@ class WP_Email_Template_Style_Body_Tab extends WP_Email_Tempate_Admin_UI
 	}
 }
 
-global $wp_email_template_style_body_tab;
-$wp_email_template_style_body_tab = new WP_Email_Template_Style_Body_Tab();
+}
+
+// global code
+namespace {
 
 /** 
  * wp_email_template_style_body_tab_manager()
@@ -132,4 +140,4 @@ function wp_email_template_style_body_tab_manager() {
 	$wp_email_template_style_body_tab->tab_manager();
 }
 
-?>
+}

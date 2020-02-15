@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork\Settings {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WP Email Teplate Send WP Emails General Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_ET_Send_WP_Emails_SparkPost_Settings
+class Send_WP_Emails_SparkPost
 {
 	/**
 	 * @var array
@@ -224,7 +228,4 @@ $(document).ready(function() {
 	}
 }
 
-global $wp_et_send_wp_emails_sparkpost_settings;
-$wp_et_send_wp_emails_sparkpost_settings = new WP_ET_Send_WP_Emails_SparkPost_Settings();
-
-?>
+}

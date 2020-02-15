@@ -1,9 +1,12 @@
 <?php
+
+namespace A3Rev\EmailTemplate\FrameWork {
+
 // File Security Check
 if (!defined('ABSPATH'))
     exit;
 
-class WP_Email_Template_Less
+class Less_Sass
 {
     public $plugin_name   = WP_EMAIL_TEMPLATE_KEY;
     public $css_file_name = 'wp_email_template';
@@ -134,7 +137,7 @@ class WP_Email_Template_Less
                 $wp_filesystem->put_contents($less_file, $sass_data, 0644);
                 $css_file     = $_upload_dir['basedir'] . '/sass/' . $filename . '.css';
                 $css_min_file = $_upload_dir['basedir'] . '/sass/' . $filename . '.min.css';
-                $compile      = new Compile_Less_Sass;
+                $compile      = new \Compile_Less_Sass;
                 $compile->compileLessFile($less_file, $css_file, $css_min_file);
             }
         }
@@ -187,6 +190,6 @@ class WP_Email_Template_Less
         return $version_number;
     }
 }
-global $wp_email_template_less;
-$wp_email_template_less = new WP_Email_Template_Less();
-?>
+
+}
+

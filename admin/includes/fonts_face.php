@@ -1,9 +1,11 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork {
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 A3rev Plugin Fonts Face
 
@@ -19,7 +21,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_Fonts_Face extends WP_Email_Tempate_Admin_UI
+class Fonts_Face extends Admin_UI
 {
 
 	/**
@@ -642,5 +644,4 @@ class WP_Email_Template_Fonts_Face extends WP_Email_Tempate_Admin_UI
 
 }
 
-global $wp_email_template_fonts_face;
-$wp_email_template_fonts_face = new WP_Email_Template_Fonts_Face();
+}

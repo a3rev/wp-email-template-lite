@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork\Pages {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
-if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /*-----------------------------------------------------------------------------------
 WP Email Template Send WP Emails Page
 
@@ -21,7 +25,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_Send_WP_Emails_Page extends WP_Email_Tempate_Admin_UI
+class Send_WP_Emails extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -94,7 +98,8 @@ class WP_Email_Template_Send_WP_Emails_Page extends WP_Email_Tempate_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function tabs_include() {
 		
-		include_once( $this->admin_plugin_dir() . '/tabs/send-wp-emails/general-settings-tab.php' );
+		global $wp_et_send_wp_emails_generate_tab;
+		$wp_et_send_wp_emails_generate_tab = new FrameWork\Tabs\Send_WP_Emails_Generate();
 		
 	}
 	
@@ -103,9 +108,9 @@ class WP_Email_Template_Send_WP_Emails_Page extends WP_Email_Tempate_Admin_UI
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
 	public function admin_settings_page() {
-		global $wp_email_template_admin_init;
+		global ${$this->plugin_prefix.'admin_init'};
 		
-		$wp_email_template_admin_init->admin_settings_page( $this->page_data() );
+		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $this->page_data() );
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -122,8 +127,10 @@ class WP_Email_Template_Send_WP_Emails_Page extends WP_Email_Tempate_Admin_UI
 	
 }
 
-global $wp_email_template_send_wp_emails_page;
-$wp_email_template_send_wp_emails_page = new WP_Email_Template_Send_WP_Emails_Page();
+}
+
+// global code
+namespace {
 
 /** 
  * wp_email_template_send_wp_emails_page_show()
@@ -139,4 +146,4 @@ function callback_wp_email_template_send_wp_emails_page_show() {
 	$wp_email_template_send_wp_emails_page->callback_admin_settings_page();
 }
 
-?>
+}

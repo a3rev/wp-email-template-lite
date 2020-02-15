@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork\Settings {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WP Email Teplate Send WP Emails General Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
+class Send_WP_Emails_General extends FrameWork\Admin_UI
 {
 	
 	/**
@@ -107,9 +111,9 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$wp_email_template_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -117,7 +121,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Process when clean on deletion option is un selected */
 	/*-----------------------------------------------------------------------------------*/
 	public function after_save_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
 		if ( isset( $_POST['bt_save_settings'] ) && ! isset( $_POST[$this->option_name]['email_delivery_provider'] ) ) {
 			$settings_array = get_option( $this->option_name, array() );
@@ -133,12 +137,12 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 				global $wp_et_send_wp_emails;
 				$sent_result = $wp_et_send_wp_emails->send_a_test_email( $wp_email_template_test_send_email  );
 				if ( $sent_result ) {
-					echo $wp_email_template_admin_interface->get_success_message( __( 'Test Email successfully sent', 'wp-email-template' ) );
+					echo ${$this->plugin_prefix.'admin_interface'}->get_success_message( __( 'Test Email successfully sent', 'wp-email-template' ) );
 				} else {
-					echo $wp_email_template_admin_interface->get_error_message( __( 'Error: Test Email can not send', 'wp-email-template' ) . '<br /><a href="#TB_inline?width=600&height=550&inlineId=test_error_container" class="thickbox" >' . __( 'View Detailed Debug', 'wp-email-template' ) . '</a>' );
+					echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( __( 'Error: Test Email can not send', 'wp-email-template' ) . '<br /><a href="#TB_inline?width=600&height=550&inlineId=test_error_container" class="thickbox" >' . __( 'View Detailed Debug', 'wp-email-template' ) . '</a>' );
 				}
 			} else {
-				echo $wp_email_template_admin_interface->get_error_message( __( 'The email address for test need to enter', 'wp-email-template' ) );
+				echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( __( 'The email address for test need to enter', 'wp-email-template' ) );
 			}
 		}
 		
@@ -168,7 +172,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 							$error_message .= __( '2. Ensure that it can be listened to from the outside.', 'wp-email-template' );
 							$error_message .= '</li>';
 							$error_message .= '</ul>';
-							echo $wp_email_template_admin_interface->get_error_message( $error_message );
+							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
 						}
 
 						// check api key
@@ -177,7 +181,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 							update_option( 'wp_et_mandrill_api_key_valid', 1 );
 						} else {
 							delete_option( 'wp_et_mandrill_api_key_valid');
-							echo $wp_email_template_admin_interface->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
+							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
 						}
 					} else {
 						// check api key
@@ -186,7 +190,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 							update_option( 'wp_et_mandrill_api_key_valid', 1 );
 						} else {
 							delete_option( 'wp_et_mandrill_api_key_valid');
-							echo $wp_email_template_admin_interface->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
+							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
 						}
 					}
 				break;
@@ -208,7 +212,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 							$error_message .= __( '2. Ensure that it can be listened to from the outside.', 'wp-email-template' );
 							$error_message .= '</li>';
 							$error_message .= '</ul>';
-							echo $wp_email_template_admin_interface->get_error_message( $error_message );
+							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
 						}
 					}
 				break;
@@ -231,7 +235,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 						$error_message .= __( '2. Ensure that it can be listened to from the outside.', 'wp-email-template' );
 						$error_message .= '</li>';
 						$error_message .= '</ul>';
-						echo $wp_email_template_admin_interface->get_error_message( $error_message );
+						echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
 					}
 				break;
 				default:
@@ -256,7 +260,7 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 						$error_message .= '</ul>';
 						$error_message .= '</li>';
 						$error_message .= '</ul>';
-						echo $wp_email_template_admin_interface->get_error_message( $error_message );
+						echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
 					}
 				break;
 			endswitch;
@@ -268,9 +272,9 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$wp_email_template_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -314,10 +318,10 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
 		$output = '';
-		$output .= $wp_email_template_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 
 		return $output;
 	}
@@ -700,8 +704,9 @@ class WP_ET_Send_WP_Emails_General_Settings extends WP_Email_Tempate_Admin_UI
 			),
 		);
 
-		include_once( $this->admin_plugin_dir() . '/settings/send-wp-emails/sparkpost-settings.php' );
 		global $wp_et_send_wp_emails_sparkpost_settings;
+		$wp_et_send_wp_emails_sparkpost_settings = new Send_WP_Emails_SparkPost();
+		
 		$this->form_fields = array_merge( $this->form_fields, $wp_et_send_wp_emails_sparkpost_settings->form_fields );
 
 		$this->form_fields = array_merge( $this->form_fields, array(
@@ -854,8 +859,10 @@ $(document).ready(function() {
 	}
 }
 
-global $wp_et_send_wp_emails_general_settings;
-$wp_et_send_wp_emails_general_settings = new WP_ET_Send_WP_Emails_General_Settings();
+}
+
+// global code
+namespace {
 
 /**
  * wp_et_send_wp_emails_general_settings_form()
@@ -866,4 +873,4 @@ function wp_et_send_wp_emails_general_settings_form() {
 	$wp_et_send_wp_emails_general_settings->settings_form();
 }
 
-?>
+}

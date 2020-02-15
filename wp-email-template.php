@@ -3,15 +3,15 @@
 Plugin Name: WP Email Template LITE
 Plugin URI: http://a3rev.com/shop/wp-email-template/
 Description: This plugin automatically adds a professional, responsive, customizable, email browser optimized HTML template for all WordPress and WordPress plugin generated emails that are sent from your site to customers and admins. Works with any WordPress plugin including the e-commerce plugins WooCommerce and WP e-Commerce.
-Version: 2.4.0
-Requires at least: 4.5
-Tested up to: 5.3.1
+Version: 2.4.1
+Requires at least: 4.9
+Tested up to: 5.3.2
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Text Domain: wp-email-template
 Domain Path: /languages
 WC requires at least: 2.0.0
-WC tested up to: 3.8.1
+WC tested up to: 3.9.2
 License: This software is under commercial license and copyright to A3 Revolution Software Development team
 
 	WP Email Template plugin
@@ -37,11 +37,31 @@ define('WP_EMAIL_TEMPLATE_CSS_URL', WP_EMAIL_TEMPLATE_URL . '/assets/css');
 if (!defined("WP_EMAIL_TEMPLATE_AUTHOR_URI")) define("WP_EMAIL_TEMPLATE_AUTHOR_URI", "https://a3rev.com/shop/wp-email-template/");
 
 define( 'WP_EMAIL_TEMPLATE_KEY', 'wp_email_template' );
-define( 'WP_EMAIL_TEMPLATE_VERSION', '2.4.0' );
+define( 'WP_EMAIL_TEMPLATE_PREFIX', 'wp_email_template_' );
+define( 'WP_EMAIL_TEMPLATE_VERSION', '2.4.1' );
 define( 'WP_EMAIL_TEMPLATE_G_FONTS', true );
+
+use \A3Rev\EmailTemplate\FrameWork;
 
 if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 	require __DIR__ . '/vendor/autoload.php';
+
+	/**
+	 * Plugin Framework init
+	 */
+	global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'};
+	${WP_EMAIL_TEMPLATE_PREFIX.'admin_interface'} = new FrameWork\Admin_Interface();
+
+	global $wp_email_template_admin_page;
+	$wp_email_template_admin_page = new FrameWork\Pages\Email_Template_Admin();
+
+	global $wp_email_template_send_wp_emails_page;
+	$wp_email_template_send_wp_emails_page = new FrameWork\Pages\Send_WP_Emails();
+
+	global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
+	${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'} = new FrameWork\Admin_Init();
+
+	// End - Plugin Framework init
 
 	global $wp_et_send_wp_emails;
 	$wp_et_send_wp_emails = new \A3Rev\EmailTemplate\Send_Wp_Emails_Functions();
@@ -69,14 +89,6 @@ function wp_email_template_plugin_textdomain() {
 	load_textdomain( 'wp-email-template', WP_LANG_DIR . '/wp-email-template/wp-email-template-' . $locale . '.mo' );
 	load_plugin_textdomain( 'wp-email-template', false, WP_EMAIL_TEMPLATE_FOLDER . '/languages/' );
 }
-
-include ('admin/admin-ui.php');
-include ('admin/admin-interface.php');
-
-include ('admin/admin-pages/admin-email-template-page.php');
-include ('admin/admin-pages/send-wp-emails-page.php');
-
-include ('admin/admin-init.php');
 
 include ('admin/email-init.php');
 

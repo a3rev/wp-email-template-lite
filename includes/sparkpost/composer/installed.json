@@ -137,7 +137,7 @@
             "rmccue/requests": "dev-master",
             "satooshi/php-coveralls": "^0.6",
             "symfony/event-dispatcher": "^2.0|^3.0",
-            "symfony/phpunit-bridge": "^2.7|^3.0",
+            "symfony/phpunit-bridge": "3.4.26",
             "tedivm/stash": "^0.13",
             "zendframework/zend-http": "^2.3.4",
             "zendframework/zendframework1": ">=1.12.9,<=1.12.14|^1.12.16"

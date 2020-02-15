@@ -1,9 +1,9 @@
 === WP Email Template  ===
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
-Requires at least: 4.5
-Tested up to: 5.3.1
-Stable tag: 2.4.0
+Requires at least: 4.9
+Tested up to: 5.3.2
+Stable tag: 2.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -108,8 +108,8 @@ Want to add a new language to WP Email Template! You can contribute via [transla
 
 = Minimum Requirements =
 
-* WordPress 4.6 or greater
-* PHP version 5.6.0 or greater
+* WordPress 4.9 or greater
+* PHP version 7.0 or greater
 * MySQL version 5.6 or greater OR MariaDB version 10.0 or greater
 
 = Automatic installation =
@@ -149,6 +149,16 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.4.1 - 2020/02/15 =
+* This maintenance release includes the completion of conversion to PHP composer, a fix for smpt api custom header, a security upgrade for a dependency script and compatibility with WordPress 5.3.2 and WooCommerce 3.9.2
+* Tweak - Plugin Framework fully refactored to Composer for cleaner code and faster PHP code on admin panels
+* Tweak - Update plugin for compatibility with new version of plugin Framework
+* Tweak - Test for compatibility with WordPress 5.3.2
+* Tweak - Test for compatibility with WooCommerce 3.9.2
+* Fix - Check and don't override From Email and From Name if custom from headers information is passed via smtp api
+* Credit - Thanks to @akkon for advice about the custom reader over ride in smtp api issue
+* Security - Update symfony/phpunit-bridge script to 3.4.26 to resolve a vulnerability in the script
 
 = 2.4.0 - 2019/12/16 =
 * This feature release is a major refactor of the plugins PHP to Composer PHP Dependency Manager, a Sparkpost bug fix and compatibility with WordPress 5.3.1 and WooCommerce 3.8.1
@@ -644,6 +654,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.4.1 =
+This maintenance release includes the completion of conversion to PHP composer, a fix for smpt api custom header, a security upgrade for a dependency script and compatibility with WordPress 5.3.2 and WooCommerce 3.9.2
 
 = 2.4.0 =
 This feature release is a major refactor of the plugins PHP to Composer PHP Dependency Manager, a Sparkpost bug fix and compatibility with WordPress 5.3.1 and WooCommerce 3.8.1

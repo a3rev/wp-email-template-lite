@@ -1,9 +1,11 @@
 <?php
 /* "Copyright 2012 a3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork {
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 A3rev Plugin Admin Init
 
@@ -20,7 +22,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_Admin_Init extends WP_Email_Tempate_Admin_UI
+class Admin_Init extends Admin_UI
 {
 
 	/**
@@ -317,7 +319,4 @@ class WP_Email_Template_Admin_Init extends WP_Email_Tempate_Admin_UI
 	}
 }
 
-global $wp_email_template_admin_init;
-$wp_email_template_admin_init = new WP_Email_Template_Admin_Init();
-
-?>
+}

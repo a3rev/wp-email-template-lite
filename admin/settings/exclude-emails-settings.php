@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork\Settings {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WP Email Teplate Exclude Emails Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_Exclude_Emails_Settings extends WP_Email_Tempate_Admin_UI
+class Exclude_Emails extends FrameWork\Admin_UI
 {
 
 	/**
@@ -108,9 +112,9 @@ class WP_Email_Template_Exclude_Emails_Settings extends WP_Email_Tempate_Admin_U
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
-		$wp_email_template_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -118,9 +122,9 @@ class WP_Email_Template_Exclude_Emails_Settings extends WP_Email_Tempate_Admin_U
 	/* Reset default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function reset_default_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
-		$wp_email_template_admin_interface->reset_settings( $this->form_fields, $this->option_name, true, true );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, true, true );
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -128,9 +132,9 @@ class WP_Email_Template_Exclude_Emails_Settings extends WP_Email_Tempate_Admin_U
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
-		$wp_email_template_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 
 	/**
@@ -174,10 +178,10 @@ class WP_Email_Template_Exclude_Emails_Settings extends WP_Email_Tempate_Admin_U
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
 		$output = '';
-		$output .= $wp_email_template_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 
 		return $output;
 	}
@@ -211,8 +215,10 @@ class WP_Email_Template_Exclude_Emails_Settings extends WP_Email_Tempate_Admin_U
 	}
 }
 
-global $wp_email_template_exclude_emails_settings;
-$wp_email_template_exclude_emails_settings = new WP_Email_Template_Exclude_Emails_Settings();
+}
+
+// global code
+namespace {
 
 /**
  * wp_email_template_exclude_emails_settings_form()
@@ -223,4 +229,4 @@ function wp_email_template_exclude_emails_settings_form() {
 	$wp_email_template_exclude_emails_settings->settings_form();
 }
 
-?>
+}

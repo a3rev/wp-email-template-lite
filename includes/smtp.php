@@ -39,8 +39,8 @@ class SMTP_Class
 		if ( $this->smtp_port == '' ) $this->smtp_port = 25;
 		$phpmailer->Port = $this->smtp_port;
 		
-		$phpmailer->From     = apply_filters( 'wp_mail_from'     , get_option('admin_email') );
-		$phpmailer->FromName = apply_filters( 'wp_mail_from_name', wp_specialchars_decode( get_option('blogname'), ENT_QUOTES ) );
+		$phpmailer->From     = apply_filters( 'wp_mail_from'     , !empty( $phpmailer->From ) ? $phpmailer->From :get_option('admin_email') );
+		$phpmailer->FromName = apply_filters( 'wp_mail_from_name', !empty( $phpmailer->FromName ) ? $phpmailer->FromName : wp_specialchars_decode( get_option('blogname'), ENT_QUOTES ) );
 					
 		// If SMTP Authentication is enable
 		if ( $this->enable_smtp_authentication == 'yes' ) {

@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork\Settings {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WP Email Teplate General Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_General_Settings extends WP_Email_Tempate_Admin_UI
+class Template_General extends FrameWork\Admin_UI
 {
 
 	/**
@@ -107,9 +111,9 @@ class WP_Email_Template_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
-		$wp_email_template_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -129,9 +133,9 @@ class WP_Email_Template_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
-		$wp_email_template_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 
 	/**
@@ -175,10 +179,10 @@ class WP_Email_Template_General_Settings extends WP_Email_Tempate_Admin_UI
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $wp_email_template_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 
 		$output = '';
-		$output .= $wp_email_template_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 
 		return $output;
 	}
@@ -421,8 +425,10 @@ $(document).ready(function() {
 	}
 }
 
-global $wp_email_template_general_settings;
-$wp_email_template_general_settings = new WP_Email_Template_General_Settings();
+}
+
+// global code
+namespace {
 
 /**
  * wp_email_template_general_settings_form()
@@ -433,4 +439,4 @@ function wp_email_template_general_settings_form() {
 	$wp_email_template_general_settings->settings_form();
 }
 
-?>
+}

@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\EmailTemplate\FrameWork\Pages {
+
+use A3Rev\EmailTemplate\FrameWork;
+
 // File Security Check
-if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /*-----------------------------------------------------------------------------------
 WP Email Template Admin Page
 
@@ -21,7 +25,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WP_Email_Template_Admin_Page extends WP_Email_Tempate_Admin_UI
+class Email_Template_Admin extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -128,14 +132,27 @@ class WP_Email_Template_Admin_Page extends WP_Email_Tempate_Admin_UI
 		if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) == 'wp_email_template' ) {
 			add_action( 'muplugins_loaded' , array( $this , 'fixed_conflicted_mandrill' ) );
 		}
-		
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-general-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-style-header-image-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-style-header-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-style-body-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-style-footer-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-social-media-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/admin-exclude-emails-tab.php' );
+
+		global $wp_email_template_general_tab;
+		$wp_email_template_general_tab = new FrameWork\Tabs\Template_Generate();
+
+		global $wp_email_template_style_header_image_tab;
+		$wp_email_template_style_header_image_tab = new FrameWork\Tabs\Style_Header_Image();
+
+		global $wp_email_template_style_header_tab;
+		$wp_email_template_style_header_tab = new FrameWork\Tabs\Style_Header();
+
+		global $wp_email_template_style_body_tab;
+		$wp_email_template_style_body_tab = new FrameWork\Tabs\Style_Body();
+
+		global $wp_email_template_style_footer_tab;
+		$wp_email_template_style_footer_tab = new FrameWork\Tabs\Style_Footer();
+
+		global $wp_email_template_social_media_tab;
+		$wp_email_template_social_media_tab = new FrameWork\Tabs\Social_Media();
+
+		global $wp_email_template_exclude_emails_tab;
+		$wp_email_template_exclude_emails_tab = new FrameWork\Tabs\Exclude_Emails();
 		
 	}
 	
@@ -144,17 +161,19 @@ class WP_Email_Template_Admin_Page extends WP_Email_Tempate_Admin_UI
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
 	public function admin_settings_page() {
-		global $wp_email_template_admin_init;
+		global ${$this->plugin_prefix.'admin_init'};
 		$my_page_data = $this->page_data();
 		$my_page_data = array_values( $my_page_data );
 		
-		$wp_email_template_admin_init->admin_settings_page( $my_page_data[1] );
+		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $my_page_data[1] );
 	}
 	
 }
 
-global $wp_email_template_admin_page;
-$wp_email_template_admin_page = new WP_Email_Template_Admin_Page();
+}
+
+// global code
+namespace {
 
 /** 
  * wp_email_template_admin_page_show()
@@ -165,4 +184,4 @@ function wp_email_template_admin_page_show() {
 	$wp_email_template_admin_page->admin_settings_page();
 }
 
-?>
+}

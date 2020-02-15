@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-          "A3Rev\\EmailTemplate\\": [ "classes/", "includes/" ]
+          "A3Rev\\EmailTemplate\\": [ "admin/", "classes/", "includes/" ]
         }
     }
 }
