@@ -21,10 +21,10 @@ class Send_Wp_Emails_Functions
 	public function __construct() {
 		$wp_et_send_wp_emails_general = get_option( 'wp_et_send_wp_emails_general', array() );
 
-		$get_email_delivery_provider = $wp_et_send_wp_emails_general['email_delivery_provider'];
+		$get_email_delivery_provider = isset( $wp_et_send_wp_emails_general['email_delivery_provider'] ) ? $wp_et_send_wp_emails_general['email_delivery_provider'] : '';
 
 		// Check if allow custom email wordpress delivery
-		if ( $wp_et_send_wp_emails_general['email_sending_option'] == 'provider' ) {
+		if ( isset( $wp_et_send_wp_emails_general['email_sending_option'] ) && $wp_et_send_wp_emails_general['email_sending_option'] == 'provider' ) {
 
 			// Update Email Wordpress to Email Delivery Provider
 			switch( $get_email_delivery_provider ) :
@@ -42,7 +42,7 @@ class Send_Wp_Emails_Functions
 				break;
 			endswitch;
 
-		} elseif ( $wp_et_send_wp_emails_general['is_godaddy_hosting'] == 'yes' ) {
+		} elseif ( isset( $wp_et_send_wp_emails_general['is_godaddy_hosting'] ) && $wp_et_send_wp_emails_general['is_godaddy_hosting'] == 'yes' ) {
 
 			// Update SMTP Host to relay-hosting.secureserver.net if it's GoDaddy Hosting
 			$this->godaddy_init();

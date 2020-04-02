@@ -335,9 +335,7 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 
 	public static function plugin_extension_box( $boxes = array() ) {
 
-		global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
-
-		$support_box = '<a href="'.${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'wp-email-template' ).'"><img src="'.WP_EMAIL_TEMPLATE_IMAGES_URL.'/go-to-support-forum.png" /></a>';
+		$support_box = '<a href="'.$GLOBALS[WP_EMAIL_TEMPLATE_PREFIX.'admin_init']->support_url.'" target="_blank" alt="'.__('Go to Support Forum', 'wp-email-template' ).'"><img src="'.WP_EMAIL_TEMPLATE_IMAGES_URL.'/go-to-support-forum.png" /></a>';
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'
@@ -381,9 +379,7 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 			return $links;
 		}
 
-		global ${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'};
-
-		$links[] = '<a href="'.${WP_EMAIL_TEMPLATE_PREFIX.'admin_init'}->support_url.'" target="_blank">'.__('Support', 'wp-email-template' ).'</a>';
+		$links[] = '<a href="'.$GLOBALS[WP_EMAIL_TEMPLATE_PREFIX.'admin_init']->support_url.'" target="_blank">'.__('Support', 'wp-email-template' ).'</a>';
 		return $links;
 	}
 

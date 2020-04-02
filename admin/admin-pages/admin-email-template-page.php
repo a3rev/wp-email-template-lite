@@ -161,11 +161,10 @@ class Email_Template_Admin extends FrameWork\Admin_UI
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
 	public function admin_settings_page() {
-		global ${$this->plugin_prefix.'admin_init'};
 		$my_page_data = $this->page_data();
 		$my_page_data = array_values( $my_page_data );
 		
-		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $my_page_data[1] );
+		$GLOBALS[$this->plugin_prefix.'admin_init']->admin_settings_page( $my_page_data[1] );
 	}
 	
 }

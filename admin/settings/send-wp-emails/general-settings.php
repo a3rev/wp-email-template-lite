@@ -110,19 +110,15 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 	/* set_default_settings()
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
-	public function set_default_settings() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
-		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
+	public function set_default_settings() {		
+		$GLOBALS[$this->plugin_prefix.'admin_interface']->reset_settings( $this->form_fields, $this->option_name, false );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
 	/* after_save_settings()
 	/* Process when clean on deletion option is un selected */
 	/*-----------------------------------------------------------------------------------*/
-	public function after_save_settings() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
+	public function after_save_settings() {		
 		if ( isset( $_POST['bt_save_settings'] ) && ! isset( $_POST[$this->option_name]['email_delivery_provider'] ) ) {
 			$settings_array = get_option( $this->option_name, array() );
 			$settings_array['email_delivery_provider'] = 'smtp';
@@ -137,12 +133,12 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 				global $wp_et_send_wp_emails;
 				$sent_result = $wp_et_send_wp_emails->send_a_test_email( $wp_email_template_test_send_email  );
 				if ( $sent_result ) {
-					echo ${$this->plugin_prefix.'admin_interface'}->get_success_message( __( 'Test Email successfully sent', 'wp-email-template' ) );
+					echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_success_message( __( 'Test Email successfully sent', 'wp-email-template' ) );
 				} else {
-					echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( __( 'Error: Test Email can not send', 'wp-email-template' ) . '<br /><a href="#TB_inline?width=600&height=550&inlineId=test_error_container" class="thickbox" >' . __( 'View Detailed Debug', 'wp-email-template' ) . '</a>' );
+					echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( __( 'Error: Test Email can not send', 'wp-email-template' ) . '<br /><a href="#TB_inline?width=600&height=550&inlineId=test_error_container" class="thickbox" >' . __( 'View Detailed Debug', 'wp-email-template' ) . '</a>' );
 				}
 			} else {
-				echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( __( 'The email address for test need to enter', 'wp-email-template' ) );
+				echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( __( 'The email address for test need to enter', 'wp-email-template' ) );
 			}
 		}
 		
@@ -172,7 +168,7 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 							$error_message .= __( '2. Ensure that it can be listened to from the outside.', 'wp-email-template' );
 							$error_message .= '</li>';
 							$error_message .= '</ul>';
-							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
+							echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( $error_message );
 						}
 
 						// check api key
@@ -181,7 +177,7 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 							update_option( 'wp_et_mandrill_api_key_valid', 1 );
 						} else {
 							delete_option( 'wp_et_mandrill_api_key_valid');
-							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
+							echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
 						}
 					} else {
 						// check api key
@@ -190,7 +186,7 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 							update_option( 'wp_et_mandrill_api_key_valid', 1 );
 						} else {
 							delete_option( 'wp_et_mandrill_api_key_valid');
-							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
+							echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message(  __( "Your Mandrill API key is invalid", 'wp-email-template' ) );
 						}
 					}
 				break;
@@ -212,7 +208,7 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 							$error_message .= __( '2. Ensure that it can be listened to from the outside.', 'wp-email-template' );
 							$error_message .= '</li>';
 							$error_message .= '</ul>';
-							echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
+							echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( $error_message );
 						}
 					}
 				break;
@@ -235,7 +231,7 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 						$error_message .= __( '2. Ensure that it can be listened to from the outside.', 'wp-email-template' );
 						$error_message .= '</li>';
 						$error_message .= '</ul>';
-						echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
+						echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( $error_message );
 					}
 				break;
 				default:
@@ -260,7 +256,7 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 						$error_message .= '</ul>';
 						$error_message .= '</li>';
 						$error_message .= '</ul>';
-						echo ${$this->plugin_prefix.'admin_interface'}->get_error_message( $error_message );
+						echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( $error_message );
 					}
 				break;
 			endswitch;
@@ -271,10 +267,8 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 	/* get_settings()
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
-	public function get_settings() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
-		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
+	public function get_settings() {		
+		$GLOBALS[$this->plugin_prefix.'admin_interface']->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -317,11 +311,9 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 	/* settings_form() */
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
-	public function settings_form() {
-		global ${$this->plugin_prefix.'admin_interface'};
-		
+	public function settings_form() {		
 		$output = '';
-		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= $GLOBALS[$this->plugin_prefix.'admin_interface']->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 
 		return $output;
 	}

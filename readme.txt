@@ -1,9 +1,9 @@
 === WP Email Template  ===
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
-Requires at least: 4.9
-Tested up to: 5.3.2
-Stable tag: 2.4.1
+Requires at least: 5.0
+Tested up to: 5.4
+Stable tag: 2.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,15 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.4.2 - 2020/04/01 =
+* This maintenance release is for compatibility with WordPress 5.4, WooCommerce 4.0.1 and PHP 7.4
+* Tweak - Test for compatibility with WordPress 5.4
+* Tweak - Test for compatibility with WooCommerce 4.0.1
+* Fix - Update global ${$this- to $GLOBALS[$this to resolve 7.0+ PHP warnings
+* Fix - Update global ${$option to $GLOBALS[$option to resolve 7.0+ PHP warnings
+* Fix - Update less PHP lib that use square brackets [] instead of curly braces {} for Array, depreciated in PHP 7.4
+* Fix - Validate to not use get_magic_quotes_gpc function that are depreciated in PHP 7.4
 
 = 2.4.1 - 2020/02/15 =
 * This maintenance release includes the completion of conversion to PHP composer, a fix for smpt api custom header, a security upgrade for a dependency script and compatibility with WordPress 5.3.2 and WooCommerce 3.9.2
@@ -654,6 +663,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.4.2 =
+This maintenance release is for compatibility with WordPress 5.4, WooCommerce 4.0.1 and PHP 7.4
 
 = 2.4.1 =
 This maintenance release includes the completion of conversion to PHP composer, a fix for smpt api custom header, a security upgrade for a dependency script and compatibility with WordPress 5.3.2 and WooCommerce 3.9.2
