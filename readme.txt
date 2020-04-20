@@ -5,7 +5,7 @@ Requires at least: 5.0
 Tested up to: 5.4
 Stable tag: 2.4.2
 License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Add a beautiful HTML Template to all WordPress and plugin generated emails. Send email options - SMTP, Gmail, Mandrill, SparkPost, GoDaddy Hosting supported.
 
@@ -60,11 +60,11 @@ The biggest issue users have are:
 
 Every different Email Provider requires another plugin to configure. For example here are just a few of the available choices.
 
-* Send Email via SMTP - [WP SMTP Mail](http://http://wordpress.org/plugins/wp-mail-smtp/), [WP SMPT](http://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](http://wordpress.org/plugins/easy-wp-smtp/)
-* Send Email via Gmail SMTP - [SendPress Lite](http://wordpress.org/plugins/sendpress/) and any SMTP plugin if you know what you are doing.
-* Send Email via Mandrill - [wpMandrill](http://wordpress.org/plugins/wpmandrill/)
+* Send Email via SMTP - [WP SMTP Mail](https://wordpress.org/plugins/wp-mail-smtp/), [WP SMPT](https://wordpress.org/plugins/wp-smtp/), [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/)
+* Send Email via Gmail SMTP - [SendPress Lite](https://wordpress.org/plugins/sendpress/) and any SMTP plugin if you know what you are doing.
+* Send Email via Mandrill - [wpMandrill](https://wordpress.org/plugins/wpmandrill/)
 * Send Email via SparkPost - [SparkPost](https://wordpress.org/plugins/sparkpost/)
-* Send via WordPress default 'local mail server' if using GoDaddy Hosting - Auto Config WordPress default Email Sending - [SendPress Lite](http://wordpress.org/plugins/sendpress/)
+* Send via WordPress default 'local mail server' if using GoDaddy Hosting - Auto Config WordPress default Email Sending - [SendPress Lite](https://wordpress.org/plugins/sendpress/)
 
 At a3rev we want users to be able to
 
@@ -95,7 +95,7 @@ Some of the better known plugins of the 1,000's of plugins that WP Email Templat
 
 = PREMIUM VERSION =
 
-For those who want more advanced features there is a Premium version. View addition features at [WP EMAIL TEMPLATE PREMIUM](http://a3rev.com/shop/wp-email-template/)
+For those who want more advanced features there is a Premium version. View addition features at [WP EMAIL TEMPLATE PREMIUM](https://a3rev.com/shop/wp-email-template/)
 
 = CONTRIBUTE =
 
