@@ -481,12 +481,19 @@ class Send_Wp_Emails_Functions
 	}
 	
 	public function send_a_test_email( $to_email ) {
+		global $wp_version;
 		global $phpmailer;
 			
 		if ( !is_object( $phpmailer ) || !is_a( $phpmailer, 'PHPMailer' ) ) {
-			require_once ABSPATH . WPINC . '/class-phpmailer.php';
-			require_once ABSPATH . WPINC . '/class-smtp.php';
-			$phpmailer = new \PHPMailer( true );
+			if ( version_compare( $wp_version, '5.5', '<' ) ) {
+				require_once ABSPATH . WPINC . '/class-phpmailer.php';
+				require_once ABSPATH . WPINC . '/class-smtp.php';
+				$phpmailer = new \PHPMailer( true );
+			} else {
+				require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+				require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+				$phpmailer = new \PHPMailer\PHPMailer\PHPMailer( true );
+			}
 		}
 		
 		// Set SMTPDebug to true

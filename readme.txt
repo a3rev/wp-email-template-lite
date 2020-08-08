@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.0
-Tested up to: 5.4
-Stable tag: 2.4.2
+Tested up to: 5.5
+Stable tag: 2.4.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,12 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.4.3 - 2020/08/08 =
+* This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
+* Tweak - Test for compatibility with WordPress 5.5
+* Tweak - Test for compatibility with WooCommerce 4.3.1
+* Tweak - Call phpmailer via namespace PHPMailer\PHPMailer\PHPMailer for compatibility with PHPMailer version 6.x in WordPress 5.5
 
 = 2.4.2 - 2020/04/01 =
 * This maintenance release is for compatibility with WordPress 5.4, WooCommerce 4.0.1 and PHP 7.4
@@ -663,6 +669,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.4.3 =
+This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
 
 = 2.4.2 =
 This maintenance release is for compatibility with WordPress 5.4, WooCommerce 4.0.1 and PHP 7.4
