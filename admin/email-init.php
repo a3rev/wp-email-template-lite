@@ -57,6 +57,13 @@ add_action('wp_ajax_nopriv_preview_wp_email_template', array('\A3Rev\EmailTempla
 // Compatibility with Formidable plugin with disable the encoding subject title
 add_filter( 'frm_encode_subject', array( '\A3Rev\EmailTemplate\Hook_Filter', 'disable_formidable_encode_subject_title' ), 10, 2 );
 
+// Compatibility with Send Test Email feature from Post SMTP plugin
+add_action( 'wp_ajax_postman_send_test_email', function() {
+	if ( is_admin() ) {
+		remove_filter('wp_mail', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_wp_mail'), 20);
+	}
+}, 1 );
+
 // Add marker at start of email template header from woocommerce
 add_action('woocommerce_email_header', array('\A3Rev\EmailTemplate\Hook_Filter', 'woo_email_header_marker_start'), 1 );
 

@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.0
-Tested up to: 5.5
-Stable tag: 2.4.3
+Tested up to: 5.5.1
+Stable tag: 2.4.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,14 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.4.4 - 2020/09/15 =
+* This maintenance release adds template compatibility with the Post SMTP plugin when it is used to configure the email sender, plus compatibility with WordPress 5.5.1 and WooCommerce 4.4.1 
+* Tweak - Make Template compatibility with Send Test email feature of Post SMTP plugin when it is used to set the email sender
+* Tweak - Make Send Test email feature compatible with Post SMTP plugin when it is used to set the email sender
+* Tweak - Test for compatibility with WordPress 5.5.1
+* Tweak - Test for compatibility with WooCommerce 4.4.1
+* Fix - Update plugin framework script, remove jQuery.browser is deprecated to resolve conflict with jQuery Migrate Helper plugin
 
 = 2.4.3 - 2020/08/08 =
 * This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
@@ -669,6 +677,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.4.4 =
+This maintenance release adds template compatibility with the Post SMTP plugin when it is used to configure the email sender, plus compatibility with WordPress 5.5.1 and WooCommerce 4.4.1
 
 = 2.4.3 =
 This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.

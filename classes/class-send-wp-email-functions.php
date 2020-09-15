@@ -503,7 +503,7 @@ class Send_Wp_Emails_Functions
 				
 		$message = Hook_Filter::preview_wp_email_content( $email_heading );
 		
-		add_filter('wp_mail_content_type', array( $this, 'preview_set_content_type'), 21 );
+		add_filter('wp_mail_content_type', array( $this, 'preview_set_content_type'), 102 );
 		$result = wp_mail( $to_email, $email_heading, $message );
 		
 		echo $this->mandrill_send_email_error_notice();
