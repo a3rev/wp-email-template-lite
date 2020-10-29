@@ -297,8 +297,8 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 
 	public static function change_default_wp_mail_from( $from_email = '' ) {
 		// Get the site domain and get rid of www.
-		$sitename = strtolower( sanitize_text_field( $_SERVER['SERVER_NAME'] ) );
-		if ( substr( $sitename, 0, 4 ) == 'www.' ) {
+		$sitename = wp_parse_url( network_home_url(), PHP_URL_HOST );
+		if ( 'www.' === substr( $sitename, 0, 4 ) ) {
 			$sitename = substr( $sitename, 4 );
 		}
 
