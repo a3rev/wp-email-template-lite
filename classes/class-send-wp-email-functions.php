@@ -492,6 +492,7 @@ class Send_Wp_Emails_Functions
 			} else {
 				require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
 				require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+				require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
 				$phpmailer = new \PHPMailer\PHPMailer\PHPMailer( true );
 			}
 		}
