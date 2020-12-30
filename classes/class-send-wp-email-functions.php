@@ -530,7 +530,7 @@ class Send_Wp_Emails_Functions
 			$phpmailer_error = ob_get_clean();
 			$phpmailer_error = str_replace( 'body {', 'body_replace', $phpmailer_error );
 			add_thickbox();
-			echo '<div id="test_error_container" style="display:none;"><p><pre>'. esc_html( $phpmailer_error ) . '</pre></p></div>';
+			echo '<div id="test_error_container" style="display:none;"><p><pre>'. $phpmailer_error . '</pre></p></div>';
 		}
 		
 		// Destroy $phpmailer so it doesn't cause issues later

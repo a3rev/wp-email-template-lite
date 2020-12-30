@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,28 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.4.9 - 2020/12/30 =
+* This is an important maintenance release that updates our scripts for compatibility with the latest version of jQuery released in WordPress 5.6
+* Tweak - Update JavaScript on plugin framework for work compatibility with latest version of jQuery
+* Fix - Replace .bind( event, handler ) by .on( event, handler ) for compatibility with latest version of jQuery
+* Fix - Replace :eq() Selector by .eq() for compatibility with latest version of jQuery
+* Fix - Replace .error() by .on( “error” ) for compatibility with latest version of jQuery
+* Fix - Replace :first Selector by .first() for compatibility with latest version of jQuery
+* Fix - Replace :gt(0) Selector by .slice(1) for compatibility with latest version of jQuery
+* Fix - Remove jQuery.browser for compatibility with latest version of jQuery
+* Fix - Replace jQuery.isArray() by Array.isArray() for compatibility with latest version of jQuery
+* Fix - Replace jQuery.isFunction(x) by typeof x === “function” for compatibility with latest version of jQuery
+* Fix - Replace jQuery.isNumeric(x) by typeof x === “number” for compatibility with latest version of jQuery
+* Fix - Replace jQuery.now() by Date.now() for compatibility with latest version of jQuery
+* Fix - Replace jQuery.parseJSON() by JSON.parse() for compatibility with latest version of jQuery
+* Fix - Remove jQuery.support for compatibility with latest version of jQuery
+* Fix - Replace jQuery.trim(x) by x.trim() for compatibility with latest version of jQuery
+* Fix - Replace jQuery.type(x) by typeof x for compatibility with latest version of jQuery
+* Fix - Replace .load( handler ) by .on( “load”, handler ) for compatibility with latest version of jQuery
+* Fix - Replace .size() by .length for compatibility with latest version of jQuery
+* Fix - Replace .unbind( event ) by .off( event ) for compatibility with latest version of jQuery
+* Fix - Replace .unload( handler ) by .on( “unload”, handler ) for compatibility with latest version of jQuery
 
 = 2.4.8 - 2020/12/10 =
 * Tweak - Test for compatibility with WooCommerce 4.8.0
@@ -698,6 +720,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.4.9 =
+This is an important maintenance release that updates our scripts for compatibility with the latest version of jQuery released in WordPress 5.6
 
 = 2.4.8 =
 * This maintenance release is for compatibility with WooCommerce 4.8.0
