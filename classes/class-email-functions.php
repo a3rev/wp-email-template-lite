@@ -460,6 +460,23 @@ class Functions
 		ob_end_clean();
 	}
 
+	public static function check_postsmtp_is_activated() {
+
+		if ( function_exists( 'post_setupPostman' ) ) {
+			$postman_options = get_option( 'postman_options' );
+			if ( is_array( $postman_options ) ) {
+				$transport_type = $postman_options['transport_type'];
+				$smtp_mailers   = $postman_options['smtp_mailers'];
+
+				if ( 'smtp' === $transport_type && 'postsmtp' === $smtp_mailers ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	/**
 	 * Hex darker/lighter/contrast functions for colours
 	 **/

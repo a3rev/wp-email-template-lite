@@ -5,6 +5,8 @@ namespace A3Rev\EmailTemplate\FrameWork\Settings {
 
 use A3Rev\EmailTemplate\FrameWork;
 
+use A3Rev\EmailTemplate;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -272,9 +274,13 @@ class Template_General extends FrameWork\Admin_UI
 			array(
 				'name' 		=> __( 'Email Content Type', 'wp-email-template' ),
 				'id' 		=> 'email_content_type',
+				'desc'		=> EmailTemplate\Functions::check_postsmtp_is_activated() ? __( 'WP Email Template has detected emails are being sent via PostSMTP which only supports HTML Content Type.', 'wp-email-template' ) : '',
 				'type' 		=> 'select',
-				'default'	=> 'multipart',
-				'options'	=> array(
+				'default'	=> EmailTemplate\Functions::check_postsmtp_is_activated() ? 'html' : 'multipart',
+				'options'	=> EmailTemplate\Functions::check_postsmtp_is_activated() ? 
+					array(
+						'html'      => __( 'HTML', 'wp-email-template' ),
+					) : array(
 						'html'      => __( 'HTML', 'wp-email-template' ),
 						'multipart' => __( 'Multipart', 'wp-email-template' ),
 					),
