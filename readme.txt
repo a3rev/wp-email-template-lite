@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.0
-Tested up to: 5.6
-Stable tag: 2.5.0
+Tested up to: 5.7
+Stable tag: 2.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,10 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.5.1 - 2021/03/09 =
+* This maintenance release is for compatibility with WordPress 5.7
+* Tweak - Test for compatibility with WordPress 5.7
 
 = 2.5.0 - 2021/01/13 =
 * This feature release adds full template compatibility with the Post SMTP plugin, the template will be auto applied to all emails sent via PostSMTP 
@@ -726,6 +730,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.5.1 =
+This maintenance release is for compatibility with WordPress 5.7
 
 = 2.5.0 =
 This feature release adds full template compatibility with the Post SMTP plugin, the template will be auto applied to all emails sent via PostSMTP
