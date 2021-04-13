@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,11 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.5.3 - 2021/04/13 =
+* This maintenance release fixes a bug with sending via Mandrill API & SparkPost API
+* Fix - Defined wp_mail function for Mandrill out from namespace for it override default wp_mail function
+* Fix - Defined wp_mail function for SparkPost out from namespace for it override default wp_mail function
 
 = 2.5.2 - 2021/03/19 =
 * This maintenance release updates 23 deprecated jQuery functions for compatibility with the latest version of jQuery in WordPress 5.7
@@ -757,6 +762,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.5.3 =
+This maintenance release fixes a bug with sending via Mandrill API & SparkPost API
 
 = 2.5.2 =
 This maintenance release updates 23 deprecated jQuery functions for compatibility with the latest version of jQuery in WordPress 5.7

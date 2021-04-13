@@ -8,7 +8,7 @@
  * send_a_test_email()
  */
 
-namespace A3Rev\EmailTemplate;
+namespace A3Rev\EmailTemplate {
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -147,10 +147,7 @@ class Send_Wp_Emails_Functions
 
 				// Check if Mandrill API Key don't have invalid message then define wp_mail function before w_mail of wp-includes/pluggable.php
 				if ( get_option( 'wp_et_mandrill_api_key_valid', 0 ) == 1 ) {
-					function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
-						global $wp_et_send_wp_emails;
-						return $wp_et_send_wp_emails->mandrill_send_email( $to, $subject, $message, $headers, $attachments );
-					}
+					a3rev_email_template_mandrill_wp_mail();
 				}
 			}
 		}
@@ -178,11 +175,7 @@ class Send_Wp_Emails_Functions
 				add_action( 'admin_notices', array( $this, 'sparkpost_send_email_error_notice' ) );
 
 				// Check if Mandrill API Key don't have invalid message then define wp_mail function before w_mail of wp-includes/pluggable.php
-				function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
-					require_once WP_EMAIL_TEMPLATE_DIR . '/includes/sparkpost.php';
-					$wp_et_sparkpost_functions = new \WP_Email_Template_SparkPost_Functions();
-					return $wp_et_sparkpost_functions->http_api_send_email( $to, $subject, $message, $headers, $attachments );
-				}
+				a3rev_email_template_spartkpost_wp_mail();
 			}
 		}
 	}
@@ -544,4 +537,25 @@ class Send_Wp_Emails_Functions
 
 		return $content_type;
 	}
+}
+
+}
+
+namespace  {
+
+	function a3rev_email_template_mandrill_wp_mail() {
+		function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
+			global $wp_et_send_wp_emails;
+			return $wp_et_send_wp_emails->mandrill_send_email( $to, $subject, $message, $headers, $attachments );
+		}
+	}
+
+	function a3rev_email_template_spartkpost_wp_mail() {
+		function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
+			require_once WP_EMAIL_TEMPLATE_DIR . '/includes/sparkpost.php';
+			$wp_et_sparkpost_functions = new \WP_Email_Template_SparkPost_Functions();
+			return $wp_et_sparkpost_functions->http_api_send_email( $to, $subject, $message, $headers, $attachments );
+		}
+	}
+
 }
