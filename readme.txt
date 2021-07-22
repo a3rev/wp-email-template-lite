@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.0
-Tested up to: 5.7
-Stable tag: 2.5.3
+Tested up to: 5.8
+Stable tag: 2.5.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,12 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.5.4 - 2021/07/22 =
+* This maintenance release has code tweaks for compatibility with WordPress Major version 5.8, WooCommerce version 5.5.1 and some Security Hardening.
+* Tweak - Test for compatibility with WordPress 5.8
+* Tweak - Test for compatibility with WooCommerce 5.5.1
+* Security - Add more variable, options and html escaping
 
 = 2.5.3 - 2021/04/13 =
 * This maintenance release fixes a bug with sending via Mandrill API & SparkPost API
@@ -762,6 +768,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.5.4 =
+This maintenance release has code tweaks for compatibility with WordPress Major version 5.8, WooCommerce version 5.5.1 and some Security Hardening.
 
 = 2.5.3 =
 This maintenance release fixes a bug with sending via Mandrill API & SparkPost API
