@@ -329,6 +329,26 @@ Gothica minim lectores demonstraverunt ut soluta. Sequitur quam exerci veniam al
 		return $enable_encode;
 	}
 
+	public static function outlook_non_border_compatibility( $border_style_css, $option ) {
+		if ( empty( $option['width'] ) || '0px' == $option['width'] ) {
+			$border_style_css = '';
+		}
+
+		return $border_style_css;
+	}
+
+	public static function outlook_non_border_corner_compatibility( $border_corner_css, $option ) {
+		if ( ! isset( $option['corner'] ) || 'rounded' != esc_attr( $option['corner'] ) ) {
+			$border_corner_css = '';
+		} else {
+			if ( ( isset( $option['top_left_corner'] ) && 0 == $option['top_left_corner'] ) && ( isset( $option['top_right_corner'] ) && 0 == $option['top_right_corner'] ) && ( isset( $option['bottom_left_corner'] ) && 0 == $option['bottom_left_corner'] ) && ( isset( $option['bottom_right_corner'] ) && 0 == $option['bottom_right_corner'] ) ) {
+				$border_corner_css = '';
+			}
+		}
+
+		return $border_corner_css;
+	}
+
 	public static function a3_wp_admin() {
 		wp_enqueue_style( 'a3rev-wp-admin-style', WP_EMAIL_TEMPLATE_CSS_URL . '/a3_wp_admin.css' );
 	}

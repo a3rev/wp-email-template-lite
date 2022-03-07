@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.6
-Tested up to: 5.9
-Stable tag: 2.6.0
+Tested up to: 5.9.1
+Stable tag: 2.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -148,6 +148,25 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.6.1 - 2022/03/07 =
+* This maintenance release has tweaks for border display in Outlook emails plus various code security hardening tweaks.
+* Performance – Call update_google_map_api_key when settings form is submitted instead of instance of Admin_UI
+* Performance – Call update_google_font_api_key when settings form is submitted instead of instance of Fonts_Face
+* Tweak - Filter on generate_border_style_css for compatibility with border display in Outlook
+* Tweak - Filter on generate_border_corner_css for compatibility with border corner display in Outlook
+* Tweak – Nonce check for when settings form is submitted from plugin framework
+* Tweak – Capabilities manage_options check for when settings form is submitted from plugin framework
+* Security – Patch for SQL injection attack vulnerability
+* Security – Apply wp_kses_post for $-variables that include html before output
+* Security – Validate $is_open variable
+* Security – Move check nonce and capabilities from before to inside functions
+* Security – Define new esc_attribute_array_e function to escape attribute array late for echo
+* Security – Escape $default_color late for echo
+* Security – Put $-variable additional with html include into wp_kses_post
+* Security – Turn off display_errors to prevent malformed JSON from API for when WP_DEBUG is set to off OR WP_DEBUG_DISPLAY is set to off
+* Framework – Allow filters output of CSS are generated from plugin framework
+* Framework – Upgrade Plugin Framework to version 2.6.0
 
 = 2.6.0 - 2022/01/21 =
 * This release has a new Google Fonts API Validation feature plus compatibility with WordPress major version 5.9
@@ -779,6 +798,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 2.6.1 =
+This maintenance release has tweaks for border display in Outlook emails plus various code security hardening tweaks.
 
 = 2.6.0 = 
 This release has a new Google Fonts API Validation feature plus compatibility with WordPress major version 5.9
