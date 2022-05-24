@@ -3803,7 +3803,7 @@ class Admin_Interface extends Admin_UI
 			echo '</div>' . "\n\n";
 		}
 
-		$this->esc_description_e( $settings_html );
+		echo wptexturize( $settings_html );
 
 		echo '</div>';
 
