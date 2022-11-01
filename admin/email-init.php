@@ -87,7 +87,7 @@ add_filter('wp_mail_from', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_def
 add_filter('wp_mail_from_name', array('\A3Rev\EmailTemplate\Hook_Filter', 'change_default_wp_mail_from_name'), 1);
 
 // For multipart messages
-add_action( 'phpmailer_init', array( '\A3Rev\EmailTemplate\Hook_Filter', 'handle_multipart' ) );
+add_action( 'phpmailer_init', array( '\A3Rev\EmailTemplate\Hook_Filter', 'handle_multipart' ), 11 );
 
 // Outlook Border Compatibility
 add_filter( WP_EMAIL_TEMPLATE_KEY . '_generate_border_style_css', array( '\A3Rev\EmailTemplate\Hook_Filter', 'outlook_non_border_compatibility' ), 10, 2 );

@@ -2,8 +2,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 5.6
-Tested up to: 6.0
-Stable tag: 2.6.2
+Tested up to: 6.1
+Stable tag: 2.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -148,6 +148,12 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.6.3 - 2022/11/01 =
+* This maintenance release has a security vulnerability patch, plus compatibility with WordPress major version 6.1.0 and WooCommerce version 7.0
+* Tweak - Test for compatibility with WordPress 6.1
+* Tweak - Test for compatibility with WooCommerce 7.0
+* Security - This release has a patch for a security vulnerability
 
 = 2.6.2 - 2022/03/12 =
 This security release follows a full security audit with code refactoring, security hardening including additional escaping and sanitizing and a bug fix from the last update.
@@ -805,6 +811,9 @@ This security release follows a full security audit with code refactoring, secur
 
 
 == Upgrade Notice ==
+
+= 2.6.3 =
+This maintenance release has a security vulnerability patch, plus compatibility with WordPress major version 6.1.0 and WooCommerce version 7.0
 
 = 2.6.2=
 This security release follows a full security audit with code refactoring, security hardening including additional escaping and sanitizing and a bug fix from the last update.
