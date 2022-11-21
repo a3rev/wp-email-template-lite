@@ -1035,7 +1035,7 @@ class Admin_Interface extends Admin_UI
 
 	public function reset_settings( $options, $option_name = '', $reset = false, $free_version = false ) {
 
-		if ( $reset ) {
+		if ( $reset && ! $free_version ) {
 			check_admin_referer( 'save_settings_' . $this->plugin_name );
 
 			if ( ! current_user_can( 'manage_options' ) ) {
