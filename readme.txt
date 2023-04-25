@@ -1,9 +1,9 @@
 === WP Email Template  ===
 Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
-Requires at least: 5.6
+Requires at least: 6.0
 Tested up to: 6.2
-Stable tag: 2.7.0
+Stable tag: 2.8.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -148,6 +148,12 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.8.0 - 2023/04/25 =
+* This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
+* Tweak - Test for compatibility with WordPress 6.2
+* Tweak - Test for compatibility with WooCommerce 7.6.0
+* Tweak - Test and declare plugin compatibility with WooCommerce HPOS Custom Tables.
 
 = 2.7.0 - 2023/01/03 =
 * This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls and has compatibility with WooCommerce 7.2
@@ -826,6 +832,9 @@ This security release follows a full security audit with code refactoring, secur
 
 
 == Upgrade Notice ==
+
+= 2.8.0 =
+This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
 
 = 2.7.0 =
 This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls and has compatibility with WooCommerce 7.2.
