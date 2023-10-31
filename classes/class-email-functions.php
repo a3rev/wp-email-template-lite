@@ -308,8 +308,8 @@ class Functions
 		global $wp_email_template_style_header;
 
 		$file 	= 'email_header.html';
-		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
-			$header_template_path = STYLESHEETPATH . '/emails/'. $file;
+		if (file_exists( get_stylesheet_directory() . '/emails/'. $file)) {
+			$header_template_path = get_stylesheet_directory() . '/emails/'. $file;
 			$header_template_url = get_stylesheet_directory_uri() . '/emails/'. $file;
 		} else {
 			$header_template_path = WP_EMAIL_TEMPLATE_DIR . '/emails/'. $file;
@@ -335,8 +335,8 @@ class Functions
 	public static function email_footer() {
 		$file 	= 'email_footer.html';
 
-		if (file_exists(STYLESHEETPATH . '/emails/'. $file)) {
-			$footer_template_path = STYLESHEETPATH . '/emails/'. $file;
+		if (file_exists( get_stylesheet_directory() . '/emails/'. $file)) {
+			$footer_template_path = get_stylesheet_directory() . '/emails/'. $file;
 			$footer_template_url = get_stylesheet_directory_uri() . '/emails/'. $file;
 		} else {
 			$footer_template_path = WP_EMAIL_TEMPLATE_DIR . '/emails/'. $file;
