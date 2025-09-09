@@ -13,11 +13,7 @@ class Exclude_Subject_Data
 	public $table_name = 'a3_exclude_email_subject';
 
 	public function __construct() {
-		if ( is_admin() ) {
-			// Ajax Update Portfolio Feature Order
-			add_action( 'wp_ajax_portfolio_update_feature_order', array( $this, 'portfolio_update_feature_order' ) );
-			add_action( 'wp_ajax_nopriv_portfolio_update_feature_order', array( $this, 'portfolio_update_feature_order' ) );
-		}
+
 	}
 
 	public function install_database() {

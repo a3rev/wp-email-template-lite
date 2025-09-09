@@ -51,8 +51,6 @@ class Admin_Interface extends Admin_UI
 
 		// AJAX hide yellow message dontshow
 		add_action( 'wp_ajax_'.$this->plugin_name.'_a3_admin_ui_event', array( $this, 'a3_admin_ui_event' ) );
-		add_action( 'wp_ajax_nopriv_'.$this->plugin_name.'_a3_admin_ui_event', array( $this, 'a3_admin_ui_event' ) );
-
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -173,6 +171,12 @@ class Admin_Interface extends Admin_UI
 
 	public function a3_admin_ui_event() {
 		check_ajax_referer( $this->plugin_name. '_a3_admin_ui_event', 'security' );
+		
+		// Verify user has proper capabilities.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'wp-email-template' ) );
+		}
+		
 		if ( isset( $_REQUEST['type'] ) ) {
 			switch ( trim( sanitize_text_field( wp_unslash( $_REQUEST['type'] ) ) ) ) {
 				case 'open_close_panel_box':

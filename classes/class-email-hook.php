@@ -153,6 +153,11 @@ class Hook_Filter
 
 	public static function preview_wp_email_template() {
 		check_ajax_referer( 'preview_wp_email_template', 'security' );
+		
+		// Verify user has proper capabilities.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'wp-email-template' ) );
+		}
 
 		$email_heading = __('Email preview', 'wp-email-template' );
 

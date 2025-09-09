@@ -52,7 +52,7 @@ $GLOBALS[WP_EMAIL_TEMPLATE_PREFIX.'admin_init']->init();
 add_filter( $GLOBALS[WP_EMAIL_TEMPLATE_PREFIX.'admin_init']->plugin_name . '_plugin_extension_boxes', array( '\A3Rev\EmailTemplate\Hook_Filter', 'plugin_extension_box' ) );
 
 add_action('wp_ajax_preview_wp_email_template', array('\A3Rev\EmailTemplate\Hook_Filter', 'preview_wp_email_template') );
-add_action('wp_ajax_nopriv_preview_wp_email_template', array('\A3Rev\EmailTemplate\Hook_Filter', 'preview_wp_email_template') );
+// Removed wp_ajax_nopriv_ action for security - preview should only be available to logged-in users
 
 // Compatibility with Formidable plugin with disable the encoding subject title
 add_filter( 'frm_encode_subject', array( '\A3Rev\EmailTemplate\Hook_Filter', 'disable_formidable_encode_subject_title' ), 10, 2 );
