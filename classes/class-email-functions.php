@@ -388,6 +388,9 @@ class Functions
 		}
 
 		if (stristr($message, '<!--NO_USE_EMAIL_TEMPLATE-->') === false ) {
+			if ( class_exists( '\WP_HTML_Processor' ) ) {
+				$email_heading = \WP_HTML_Processor::normalize( $email_heading );
+			}
 			$html .= self::email_header($email_heading);
 		}
 
@@ -410,6 +413,10 @@ class Functions
 			}
 			
 			$message = $message_dom->find( 'body', 0 )->innertext;
+		}
+
+		if ( class_exists( '\WP_HTML_Processor' ) ) {
+			$message = \WP_HTML_Processor::normalize( $message );
 		}
 
 		$html .= wpautop( make_clickable( $message) );
