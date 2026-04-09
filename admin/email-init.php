@@ -25,12 +25,10 @@ function wp_email_template_init() {
 		// Set Settings Default from Admin Init
 		$GLOBALS[WP_EMAIL_TEMPLATE_PREFIX.'admin_init']->set_default_settings();
 	}
-
-	wp_email_template_plugin_textdomain();
 }
 
-// Add language
-add_action('init', 'wp_email_template_init');
+add_action( 'after_setup_theme', 'wp_email_template_plugin_textdomain' );
+add_action( 'init', 'wp_email_template_init' );
 
 // Add custom style to dashboard
 add_action( 'admin_enqueue_scripts', array( '\A3Rev\EmailTemplate\Hook_Filter', 'a3_wp_admin' ) );
