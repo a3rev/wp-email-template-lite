@@ -122,7 +122,14 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 	/* after_save_settings()
 	/* Process when clean on deletion option is un selected */
 	/*-----------------------------------------------------------------------------------*/
-	public function after_save_settings() {		
+	public function after_save_settings() {
+		if ( ! isset( $_POST['form_name_action'] )
+			|| ! isset( $_POST['_wpnonce'] )
+			|| ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['_wpnonce'] ) ), 'save_settings_' . $this->plugin_name )
+			|| ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		if ( isset( $_POST['bt_save_settings'] ) && ! isset( $_POST[$this->option_name]['email_delivery_provider'] ) ) {
 			$settings_array = get_option( $this->option_name, array() );
 			$settings_array['email_delivery_provider'] = 'smtp';
@@ -130,19 +137,24 @@ class Send_WP_Emails_General extends FrameWork\Admin_UI
 		}
 		if ( isset( $_POST['wp-email-template-send-test-email-now'] ) ) {
 			$wp_email_template_test_send_email = trim( sanitize_text_field( $_POST['wp_email_template_test_send_email'] ) );
-			update_option( 'wp_email_template_test_send_email', $wp_email_template_test_send_email );
-			if ( '' != trim( $wp_email_template_test_send_email ) ) {
 
-				// Send a test email here
-				global $wp_et_send_wp_emails;
-				$sent_result = $wp_et_send_wp_emails->send_a_test_email( $wp_email_template_test_send_email  );
-				if ( $sent_result ) {
-					echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_success_message( __( 'Test Email successfully sent', 'wp-email-template' ) );
-				} else {
-					echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( __( 'Error: Test Email can not send', 'wp-email-template' ) . '<br /><a href="#TB_inline?width=600&height=550&inlineId=test_error_container" class="thickbox" >' . __( 'View Detailed Debug', 'wp-email-template' ) . '</a>' );
-				}
-			} else {
+			if ( '' !== $wp_email_template_test_send_email && ! is_email( $wp_email_template_test_send_email ) ) {
 				echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( __( 'The email address for test need to enter', 'wp-email-template' ) );
+			} else {
+				update_option( 'wp_email_template_test_send_email', $wp_email_template_test_send_email );
+				if ( '' != trim( $wp_email_template_test_send_email ) ) {
+
+					// Send a test email here
+					global $wp_et_send_wp_emails;
+					$sent_result = $wp_et_send_wp_emails->send_a_test_email( $wp_email_template_test_send_email  );
+					if ( $sent_result ) {
+						echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_success_message( __( 'Test Email successfully sent', 'wp-email-template' ) );
+					} else {
+						echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( __( 'Error: Test Email can not send', 'wp-email-template' ) . '<br /><a href="#TB_inline?width=600&height=550&inlineId=test_error_container" class="thickbox" >' . __( 'View Detailed Debug', 'wp-email-template' ) . '</a>' );
+					}
+				} else {
+					echo $GLOBALS[$this->plugin_prefix.'admin_interface']->get_error_message( __( 'The email address for test need to enter', 'wp-email-template' ) );
+				}
 			}
 		}
 		
