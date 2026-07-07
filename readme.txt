@@ -3,7 +3,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: wordpress email template, wordpress email, email, email template, contact, contact forms,  wp e-commerce email, woocommerce email, contact form 7, e-commerce email, comment forms, comments, forms
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.8.6
+Stable tag: 2.8.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -148,6 +148,11 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 2.8.7 - 2026/07/02 =
+* Security - Add nonce verification to the send-test-email settings action
+* Security - Remove the SSL-verification bypass on outbound Google API requests
+* Tweak - Escape uploader hidden-field values and email header output
 
 = 2.8.6 - 2026/03/31 =
 * This maintenance release has bug fixes and compatibility with WordPress 7.0
@@ -870,6 +875,9 @@ This security release follows a full security audit with code refactoring, secur
 
 
 == Upgrade Notice ==
+
+= 2.8.7 =
+This release includes security hardening for the plugin settings pages.
 
 = 2.8.6 =
 This maintenance release has bug fixes and compatibility with WordPress 7.0

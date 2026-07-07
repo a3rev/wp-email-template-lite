@@ -198,8 +198,7 @@ class Admin_Interface extends Admin_UI
 					break;
 
 				case 'check_new_version':
-					$transient_name = sanitize_key( wp_unslash( $_REQUEST['transient_name'] ) );
-					delete_transient( $transient_name );
+					delete_transient( $this->version_transient );
 
 					$new_version = '';
 
